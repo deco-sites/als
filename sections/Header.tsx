@@ -13,7 +13,7 @@ function NavItem({
   return (
     <a
       href={href ?? `/search?ft=${children}`}
-      class={`flex items-center text-[16px] font-bold uppercase px-8 lg:px-12 hover:border-black border-solid border-b border-white `}
+      class={`flex items-center text-[16px] font-medium`}
     >
       {children}
     </a>
@@ -22,46 +22,65 @@ function NavItem({
 
 function Navbar() {
   return (
-    <div>
-      <section class="md:hidden flex p-2 justify-between items-center px-12">
-        <button aria-label="open menu" class="p-2">
-          <Icon name="Bars3" className="w-8 h-8" />
+    <div class="bg-[rgba(0,0,0,.8)] text-white">
+      <section class="hidden lg:flex flex-row h-8 px-2 items-center justify-between">
+        <a href="">Free shipping on orders over $50</a>
+        <a href="" class="flex gap-1 items-center">
+          <img
+            alt="Locations"
+            class="w-3 h-3"
+            src="https://alssports.vtexassets.com/assets/vtex.file-manager-graphql/images/9a54e5e3-2c66-4aad-a3d9-3c2065a43d06___d1d08ba5a21135a29706ee9b78a7b4a4.svg"
+          />
+          Locations
+        </a>
+      </section>
+
+      <section class="w-full flex h-[50px] lg:h-[64px] items-center px-1 lg:px-4 md:border-b md:border-t border-[rgba(255,255,255,0.2)]">
+        <button aria-label="open menu" class="p-2 lg:hidden">
+          <Icon name="Bars3" className="w-8 h-8 text-white" />
         </button>
-        <a href="#" class="p-2" aria-label="search">
-          <Icon name="MagnifyingGlass" className="w-8 h-8" />
-        </a>
-        <a href="/" aria-label="home link" class="flex-grow">
-        </a>
-        <a href="#" class="p-2" aria-label="my account">
-          <Icon name="User" className="w-8 h-8" />
+        <img
+          width="85"
+          height="60"
+          alt="ALS.com"
+          crossOrigin="anonymous"
+          data-src="https://alssports.vtexassets.com/assets/vtex.file-manager-graphql/images/2aea5e7c-6d5b-4c5c-80bb-74969c800993___656712b40f49a24e8b5cecbeae369b92.svg"
+          loading="lazy"
+          src="https://alssports.vtexassets.com/assets/vtex.file-manager-graphql/images/2aea5e7c-6d5b-4c5c-80bb-74969c800993___656712b40f49a24e8b5cecbeae369b92.svg"
+          class="w-[85px] h-[60px] lg:w-[105px] lg:h-[47px]"
+        ></img>
+
+        {/* TODO: Implement search bar */}
+        <div class="flex flex-grow ml-2 mr-0 lg:ml-8 lg:mr-6 items-center justify-center">
+          <input
+            type="search"
+            placeholder="Search Als.com"
+            class="w-full lg:w-[630px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
+          />
+        </div>
+        {/* <a href="#" class="p-2 hidden lg:block" aria-label="my account">
+          <Icon name="Phone" className="w-6 h-6" />
+        </a> */}
+        <a href="#" class="p-2 hidden lg:block" aria-label="my account">
+          <Icon name="User" className="w-6 h-6" />
         </a>
         <Minicart />
       </section>
-      <section class="hidden md:flex bg-white flex-row h-[80px] justify-between md:border-b border-[#d3d5db]">
-        <div class="flex items-center justify-center flex-1 min-w-[200px]">
-          <a href="/" aria-label="home link">
-          </a>
-        </div>
-        <div class="flex justify-center md:justify-between pl-12">
-          <NavItem href="/farm">Marcas</NavItem>
-          <NavItem href="/search?trade-policy=1&departamento=feminino">
-            Feminino
-          </NavItem>
-          <NavItem href="/search?trade-policy=1&departamento=masculino">
-            Masculino
-          </NavItem>
-          <NavItem href="/search?trade-policy=1&departamento=infantil">
-            Infantil
-          </NavItem>
-        </div>
-        <div class="flex-1 flex items-center justify-end md:mr-8">
-          <a href="#" class="mr-6">
-            <Icon name="MagnifyingGlass" className="w-8 h-8" />
-          </a>
-          <a href="#">
-            <Icon name="Heart" className="w-8 h-8" />
-          </a>
-          <Minicart />
+
+      <section class="hidden lg:flex flex-row h-[50px] justify-center">
+        <div class="flex w-full justify-between px-10 max-w-[1200px]">
+          <NavItem href="/farm">Men's</NavItem>
+          <NavItem href="/farm">Woman's</NavItem>
+          <NavItem href="/farm">Kids'</NavItem>
+          <NavItem href="/farm">Camp & Hike</NavItem>
+          <NavItem href="/farm">Climbing</NavItem>
+          <NavItem href="/farm">Hunting</NavItem>
+          <NavItem href="/farm">Fishing</NavItem>
+          <NavItem href="/farm">Sorts</NavItem>
+          <NavItem href="/farm">Snow</NavItem>
+          <NavItem href="/farm">Water</NavItem>
+          <NavItem href="/farm">Bike</NavItem>
+          <NavItem href="/farm">Brands</NavItem>
         </div>
       </section>
     </div>
@@ -75,7 +94,7 @@ export interface Props {
 function Header({ alerts }: Props) {
   return (
     <header>
-      <Alert alerts={alerts} />
+      {/* <Alert alerts={alerts} /> */}
       <Navbar />
     </header>
   );

@@ -8,10 +8,10 @@ export default function PromoBar(
 ) {
   return (
     <div
-      class="flex items-center w-full justify-center w-full font-sans text-sm bg-primary text-white"
+      class="flex items-center w-full justify-center w-full font-sans text-sm bg-primary text-white h-[29px]"
       aria-label="Promotion bar"
     >
-      <a href={href} class="font-semibold my-2">{title}</a>
+      <a href={href} class="tracking-wider">{title}</a>
     </div>
   );
 }

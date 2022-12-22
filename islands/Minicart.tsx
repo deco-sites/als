@@ -40,7 +40,7 @@ export default function Cart() {
         class="h-full flex items-center gap-2 p-2"
         aria-label="open cart"
       >
-        <Icon name="ShoppingCart" className="w-8 h-8" />
+        <Icon name="ShoppingCart" className="w-6 h-6 text-white" />
       </button>
       <Modal title="Seu Carrinho" ref={modalRef}>
         {cart && <CartInner cart={cart} updateItem={updateItem} />}
