@@ -75,6 +75,16 @@ export default function HeadComponent(props: Props) {
         data-color="#221E1F"
       >
       </link>
+      {/* TODO: Optimize font loading. */}
+      <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin>
+      </link>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;500;700&display=swap"
+        rel="stylesheet"
+      >
+      </link>
+
       <meta name="theme-color" content="#221E1F"></meta>
       <meta name="msapplication-TileColor" content="#221E1F"></meta>
       {styleUrls?.map((styleUrl: string) => (

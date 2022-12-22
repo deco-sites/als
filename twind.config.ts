@@ -3,7 +3,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#2FD180",
+        primary: "#19a5ff",
         "primary-green-light": "#2EAE80",
         "primary-green-dark": "#177151",
         "primary-dark": "#221E1F",
@@ -16,7 +16,7 @@ export default {
       },
     },
     fontFamily: {
-      sans: ["Lato", "sans-serif"],
+      sans: ["Figtree", "sans-serif"],
       serif: ["inherit", "serif"],
     },
     screens: {
