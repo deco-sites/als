@@ -48,19 +48,28 @@ function Navbar() {
           loading="lazy"
           src="https://alssports.vtexassets.com/assets/vtex.file-manager-graphql/images/2aea5e7c-6d5b-4c5c-80bb-74969c800993___656712b40f49a24e8b5cecbeae369b92.svg"
           class="w-[85px] h-[60px] lg:w-[105px] lg:h-[47px]"
-        ></img>
+        >
+        </img>
 
         {/* TODO: Implement search bar */}
         <div class="flex flex-grow ml-2 mr-0 lg:ml-8 lg:mr-6 items-center justify-center">
           <input
             type="search"
             placeholder="Search Als.com"
-            class="w-full lg:w-[630px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
+            class="w-full lg:w-[700px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
           />
         </div>
-        {/* <a href="#" class="p-2 hidden lg:block" aria-label="my account">
-          <Icon name="Phone" className="w-6 h-6" />
-        </a> */}
+        <a href="#" class="p-2 hidden lg:block" aria-label="my account">
+          <img
+            alt="Phone"
+            crossOrigin="anonymous"
+            src="https://alssports.vtexassets.com/assets/vtex.file-manager-graphql/images/11a29410-46bf-4a63-90ee-73f52285fc31___1b935ef5a03bd6c6ee0e7fe7a1b539b5.svg"
+            loading="lazy"
+            width={30}
+            height={30}
+            class="w-5 h-5"
+          />
+        </a>
         <a href="#" class="p-2 hidden lg:block" aria-label="my account">
           <Icon name="User" className="w-6 h-6" />
         </a>
