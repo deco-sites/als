@@ -8,6 +8,7 @@ export default {
         "primary-green-dark": "#177151",
         "primary-dark": "#221E1F",
         "primary-light": "#f4f4f4",
+        "dark-blue": "#0c389f",
         "custom-brown": "#f8f5f1",
         "custom-gray": "#3f3f40",
         "gray": "#9f9f9f",

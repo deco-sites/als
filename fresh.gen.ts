@@ -24,22 +24,23 @@ import * as $$$2 from "./sections/BannerImg.tsx";
 import * as $$$3 from "./sections/BannerThin.tsx";
 import * as $$$4 from "./sections/BrandBar.tsx";
 import * as $$$5 from "./sections/Button.story.tsx";
-import * as $$$6 from "./sections/Footer.tsx";
-import * as $$$7 from "./sections/Head.tsx";
-import * as $$$8 from "./sections/Header.tsx";
-import * as $$$9 from "./sections/HomeFilter.tsx";
-import * as $$$10 from "./sections/IconCart.tsx";
-import * as $$$11 from "./sections/ListLinks.tsx";
-import * as $$$12 from "./sections/MarcasConvidadas.tsx";
-import * as $$$13 from "./sections/Newsletter.tsx";
-import * as $$$14 from "./sections/ProductDetails.tsx";
-import * as $$$15 from "./sections/ProductGallery.tsx";
-import * as $$$16 from "./sections/ProductShelf.tsx";
-import * as $$$17 from "./sections/Search.tsx";
-import * as $$$18 from "./sections/SearchControls.tsx";
-import * as $$$19 from "./sections/StoreFeatures.tsx";
-import * as $$$20 from "./sections/SupportLinks.tsx";
-import * as $$$21 from "./sections/VideoCarousel.tsx";
+import * as $$$6 from "./sections/CardGrid.tsx";
+import * as $$$7 from "./sections/Footer.tsx";
+import * as $$$8 from "./sections/Head.tsx";
+import * as $$$9 from "./sections/Header.tsx";
+import * as $$$10 from "./sections/HomeFilter.tsx";
+import * as $$$11 from "./sections/IconCart.tsx";
+import * as $$$12 from "./sections/ListLinks.tsx";
+import * as $$$13 from "./sections/MarcasConvidadas.tsx";
+import * as $$$14 from "./sections/Newsletter.tsx";
+import * as $$$15 from "./sections/ProductDetails.tsx";
+import * as $$$16 from "./sections/ProductGallery.tsx";
+import * as $$$17 from "./sections/ProductShelf.tsx";
+import * as $$$18 from "./sections/Search.tsx";
+import * as $$$19 from "./sections/SearchControls.tsx";
+import * as $$$20 from "./sections/StoreFeatures.tsx";
+import * as $$$21 from "./sections/SupportLinks.tsx";
+import * as $$$22 from "./sections/VideoCarousel.tsx";
 import * as $$$$0 from "./functions/shopifyProductDetailsPage.ts";
 import * as $$$$1 from "./functions/shopifyProductList.ts";
 import * as $$$$2 from "./functions/shopifyProductListingPage.ts";
@@ -73,22 +74,23 @@ const manifest: DecoManifest = {
     "./sections/BannerThin.tsx": $$$3,
     "./sections/BrandBar.tsx": $$$4,
     "./sections/Button.story.tsx": $$$5,
-    "./sections/Footer.tsx": $$$6,
-    "./sections/Head.tsx": $$$7,
-    "./sections/Header.tsx": $$$8,
-    "./sections/HomeFilter.tsx": $$$9,
-    "./sections/IconCart.tsx": $$$10,
-    "./sections/ListLinks.tsx": $$$11,
-    "./sections/MarcasConvidadas.tsx": $$$12,
-    "./sections/Newsletter.tsx": $$$13,
-    "./sections/ProductDetails.tsx": $$$14,
-    "./sections/ProductGallery.tsx": $$$15,
-    "./sections/ProductShelf.tsx": $$$16,
-    "./sections/Search.tsx": $$$17,
-    "./sections/SearchControls.tsx": $$$18,
-    "./sections/StoreFeatures.tsx": $$$19,
-    "./sections/SupportLinks.tsx": $$$20,
-    "./sections/VideoCarousel.tsx": $$$21,
+    "./sections/CardGrid.tsx": $$$6,
+    "./sections/Footer.tsx": $$$7,
+    "./sections/Head.tsx": $$$8,
+    "./sections/Header.tsx": $$$9,
+    "./sections/HomeFilter.tsx": $$$10,
+    "./sections/IconCart.tsx": $$$11,
+    "./sections/ListLinks.tsx": $$$12,
+    "./sections/MarcasConvidadas.tsx": $$$13,
+    "./sections/Newsletter.tsx": $$$14,
+    "./sections/ProductDetails.tsx": $$$15,
+    "./sections/ProductGallery.tsx": $$$16,
+    "./sections/ProductShelf.tsx": $$$17,
+    "./sections/Search.tsx": $$$18,
+    "./sections/SearchControls.tsx": $$$19,
+    "./sections/StoreFeatures.tsx": $$$20,
+    "./sections/SupportLinks.tsx": $$$21,
+    "./sections/VideoCarousel.tsx": $$$22,
   },
   functions: {
     "./functions/shopifyProductDetailsPage.ts": $$$$0,
@@ -380,6 +382,60 @@ const manifest: DecoManifest = {
           },
         },
         "required": [],
+      },
+      "outputSchema": null,
+    },
+    "./sections/CardGrid.tsx": {
+      "inputSchema": {
+        "title": " Card Grid",
+        "type": "object",
+        "properties": {
+          "cards": {
+            "type": "array",
+            "items": {
+              "title": "Card",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "title": "Title",
+                },
+                "subtitle": {
+                  "type": "string",
+                  "title": "Subtitle",
+                },
+                "link": {
+                  "type": "string",
+                  "title": "Link",
+                },
+                "button": {
+                  "type": "string",
+                  "title": "Button",
+                },
+                "image": {
+                  "format": "image-uri",
+                  "type": "string",
+                  "title": "Image",
+                },
+              },
+              "required": [
+                "title",
+                "subtitle",
+                "link",
+                "button",
+                "image",
+              ],
+            },
+            "title": "Cards",
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
+        },
+        "required": [
+          "cards",
+        ],
       },
       "outputSchema": null,
     },
