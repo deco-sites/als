@@ -23,9 +23,13 @@ export default function BrandBar(
         aria-label="Brands"
       >
         {brands.map(({ name, src, link }) => (
-          <li class="flex min-w-[120px] w-36 justify-center items-center px-2">
+          <li class="flex min-w-[120px] w-36 h-auto justify-center items-center px-2">
             <a title={name} href={link}>
-              <img src={src} alt={name} class="object-cover h-12" />
+              <img
+                src={src}
+                alt={name}
+                class="object-cover h-12"
+              />
             </a>
           </li>
         ))}

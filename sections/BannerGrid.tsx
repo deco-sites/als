@@ -32,7 +32,7 @@ export default function BannerGrid({
           <a
             href={href}
             title={alt}
-            class="w-[150px] h-[150px] md:w-[250px] md:h-[250px] rounded-2xl hover:scale-105 transition hover:duration-500 duration-500"
+            class="w-[150px] h-[150px] md:w-[250px] md:h-[250px] rounded-2xl hover:scale-105 scale-100 transition hover:duration-500 duration-500"
             style={{ boxShadow: "0 0 7px 2px rgb(0 0 0 / 20%)" }}
           >
             <Image

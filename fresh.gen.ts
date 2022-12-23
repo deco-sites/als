@@ -38,9 +38,10 @@ import * as $$$16 from "./sections/ProductGallery.tsx";
 import * as $$$17 from "./sections/ProductShelf.tsx";
 import * as $$$18 from "./sections/Search.tsx";
 import * as $$$19 from "./sections/SearchControls.tsx";
-import * as $$$20 from "./sections/StoreFeatures.tsx";
-import * as $$$21 from "./sections/SupportLinks.tsx";
-import * as $$$22 from "./sections/VideoCarousel.tsx";
+import * as $$$20 from "./sections/Separator.tsx";
+import * as $$$21 from "./sections/StoreFeatures.tsx";
+import * as $$$22 from "./sections/SupportLinks.tsx";
+import * as $$$23 from "./sections/VideoCarousel.tsx";
 import * as $$$$0 from "./functions/shopifyProductDetailsPage.ts";
 import * as $$$$1 from "./functions/shopifyProductList.ts";
 import * as $$$$2 from "./functions/shopifyProductListingPage.ts";
@@ -88,9 +89,10 @@ const manifest: DecoManifest = {
     "./sections/ProductShelf.tsx": $$$17,
     "./sections/Search.tsx": $$$18,
     "./sections/SearchControls.tsx": $$$19,
-    "./sections/StoreFeatures.tsx": $$$20,
-    "./sections/SupportLinks.tsx": $$$21,
-    "./sections/VideoCarousel.tsx": $$$22,
+    "./sections/Separator.tsx": $$$20,
+    "./sections/StoreFeatures.tsx": $$$21,
+    "./sections/SupportLinks.tsx": $$$22,
+    "./sections/VideoCarousel.tsx": $$$23,
   },
   functions: {
     "./functions/shopifyProductDetailsPage.ts": $$$$0,
@@ -700,6 +702,10 @@ const manifest: DecoManifest = {
           "page",
         ],
       },
+      "outputSchema": null,
+    },
+    "./sections/Separator.tsx": {
+      "inputSchema": null,
       "outputSchema": null,
     },
     "./sections/StoreFeatures.tsx": {
