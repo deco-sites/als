@@ -60,7 +60,6 @@ function Navbar() {
               class="w-full lg:w-[700px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
             />
             <button type="submit">
-
             </button>
           </form>
         </div>
