@@ -11,7 +11,9 @@ export default function Footer() {
         <div class="hidden md:flex flex-1 justify-between">
           {FooterSections.slice(0, 3).map(({ label, content }) => (
             <div class="flex flex-col mx-6">
-              <h3 class="text-primary font-semibold text-lg">{label}</h3>
+              <h3 class="text-primary font-semibold text-lg">
+                {label}
+              </h3>
               {content}
             </div>
           ))}

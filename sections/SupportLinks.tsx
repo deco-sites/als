@@ -17,14 +17,14 @@ export default function SupportLinks() {
             />
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">
-            <h3 class="font-semibold md:mb-4">Store Hours</h3>
-            <p>
+            <h3 class="font-semibold md:mb-4 text-gray">Store Hours</h3>
+            <p class="text-light-gray">
               Mon-Sat: 9AM-9PM<br />Sunday: Closed
             </p>
             <a
               title="Store Locations"
               href=""
-              class="text-primary md:text-black"
+              class="text-primary md:text-light-gray"
             >
               Locations
             </a>
@@ -42,21 +42,21 @@ export default function SupportLinks() {
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">
             <h3 class="font-semibold md:mb-4">Support Hours</h3>
-            <p>
+            <p class="text-light-gray">
               Mon-Sat: 9AM-9PM
             </p>
             <div class="flex flex-col">
               <a
                 title="Call Us Now"
                 href={links.tel}
-                class="text-primary md:text-black"
+                class="text-primary md:text-light-gray"
               >
                 Call Now
               </a>
               <a
                 title="Email Us"
                 href={links.mailto}
-                class="text-primary md:text-black"
+                class="text-primary md:text-light-gray"
               >
                 Email
               </a>
@@ -75,19 +75,19 @@ export default function SupportLinks() {
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">
             <h3 class="font-semibold md:mb-4">FAQ</h3>
-            <p>Curbside Pickup</p>
+            <p class="text-light-gray">Curbside Pickup</p>
             <div class="flex flex-col">
               <a
                 title="Free Shipping"
                 href=""
-                class="text-primary md:text-black"
+                class="text-primary md:text-light-gray"
               >
                 Free Shipping
               </a>
               <a
                 title="Returns"
                 href=""
-                class="text-primary md:text-black"
+                class="text-primary md:text-light-gray"
               >
                 Returns
               </a>

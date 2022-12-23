@@ -25,7 +25,9 @@ export default function BannerGrid({
   return (
     <section class="max-w-[1400px] w-full px-4 md:px-0 mx-auto lg:my-12">
       <div class="pb-8 lg:pb-12 mt-8 flex items-center w-full max-w-[96rem]">
-        <h2 class="text-5xl font-semibold text-center w-full">{title}</h2>
+        <h2 class="text-5xl font-semibold text-center w-full text-gray">
+          {title}
+        </h2>
       </div>
       <div class="flex flex-wrap justify-center items-stretch gap-6 lg:gap-14 w-full max-w-[96rem]">
         {images.map(({ href, src, alt }) => (
