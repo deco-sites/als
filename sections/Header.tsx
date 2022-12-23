@@ -53,11 +53,16 @@ function Navbar() {
 
         {/* TODO: Implement search bar */}
         <div class="flex flex-grow ml-2 mr-0 lg:ml-8 lg:mr-6 items-center justify-center">
-          <input
-            type="search"
-            placeholder="Search Als.com"
-            class="w-full lg:w-[700px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
-          />
+          <form action="">
+            <input
+              type="search"
+              placeholder="Search Als.com"
+              class="w-full lg:w-[700px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
+            />
+            <button type="submit">
+
+            </button>
+          </form>
         </div>
         <a href="#" class="p-2 hidden lg:block" aria-label="my account">
           <img
