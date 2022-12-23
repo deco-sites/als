@@ -18,20 +18,23 @@ export interface Props {
   title: string;
 }
 
-export default function BannnerGrid({
+export default function BannerGrid({
   images = [],
   title,
 }: Props) {
   return (
-    <section class="max-w-[1400px] w-full px-4 md:px-0 mx-auto">
-      <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
-        <h2 class={"text-lg leading-5 font-semibold uppercase "}>{title}</h2>
-
-        <div class="bg-[#e5e5ea] h-[1px] w-full ml-4"></div>
+    <section class="max-w-[1400px] w-full px-4 md:px-0 mx-auto lg:my-12">
+      <div class="pb-8 lg:pb-12 mt-8 flex items-center w-full max-w-[96rem]">
+        <h2 class="text-5xl font-semibold text-center w-full">{title}</h2>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
+      <div class="flex flex-wrap justify-center items-stretch gap-6 lg:gap-14 w-full max-w-[96rem]">
         {images.map(({ href, src, alt }) => (
-          <a href={href}>
+          <a
+            href={href}
+            title={alt}
+            class="w-[150px] h-[150px] md:w-[250px] md:h-[250px] rounded-2xl hover:scale-105 transition hover:duration-500 duration-500"
+            style={{ boxShadow: "0 0 7px 2px rgb(0 0 0 / 20%)" }}
+          >
             <Image
               width={320}
               height={320}
@@ -40,7 +43,7 @@ export default function BannnerGrid({
               decoding="async"
               loading="lazy"
               sizes="(max-width: 640px) 100vw, 30vw"
-              class="w-full"
+              class="w-full rounded-2xl"
             />
           </a>
         ))}

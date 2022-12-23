@@ -19,9 +19,9 @@ import * as $$4 from "./islands/SearchBar.tsx";
 import * as $$5 from "./islands/SearchControls.tsx";
 import * as $$6 from "./islands/Slider.tsx";
 import * as $$$0 from "./sections/Banner.tsx";
-import * as $$$1 from "./sections/BannerImg.tsx";
-import * as $$$2 from "./sections/BannerThin.tsx";
-import * as $$$3 from "./sections/BannnerGrid.tsx";
+import * as $$$1 from "./sections/BannerGrid.tsx";
+import * as $$$2 from "./sections/BannerImg.tsx";
+import * as $$$3 from "./sections/BannerThin.tsx";
 import * as $$$4 from "./sections/BrandBar.tsx";
 import * as $$$5 from "./sections/Button.story.tsx";
 import * as $$$6 from "./sections/Footer.tsx";
@@ -68,9 +68,9 @@ const manifest: DecoManifest = {
   },
   sections: {
     "./sections/Banner.tsx": $$$0,
-    "./sections/BannerImg.tsx": $$$1,
-    "./sections/BannerThin.tsx": $$$2,
-    "./sections/BannnerGrid.tsx": $$$3,
+    "./sections/BannerGrid.tsx": $$$1,
+    "./sections/BannerImg.tsx": $$$2,
+    "./sections/BannerThin.tsx": $$$3,
     "./sections/BrandBar.tsx": $$$4,
     "./sections/Button.story.tsx": $$$5,
     "./sections/Footer.tsx": $$$6,
@@ -153,6 +153,53 @@ const manifest: DecoManifest = {
       },
       "outputSchema": null,
     },
+    "./sections/BannerGrid.tsx": {
+      "inputSchema": {
+        "title": " Banner Grid",
+        "type": "object",
+        "properties": {
+          "images": {
+            "type": "array",
+            "items": {
+              "title": "Banner",
+              "type": "object",
+              "properties": {
+                "src": {
+                  "format": "image-uri",
+                  "type": "string",
+                  "title": "Src",
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Alt",
+                  "description": "Image alt text",
+                },
+                "href": {
+                  "type": "string",
+                  "title": "Href",
+                  "description": "When you click you go to",
+                },
+              },
+              "required": [
+                "src",
+                "alt",
+                "href",
+              ],
+            },
+            "title": "Images",
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
+        },
+        "required": [
+          "images",
+          "title",
+        ],
+      },
+      "outputSchema": null,
+    },
     "./sections/BannerImg.tsx": {
       "inputSchema": {
         "title": " Banner Img",
@@ -228,53 +275,6 @@ const manifest: DecoManifest = {
         "required": [
           "title",
           "href",
-        ],
-      },
-      "outputSchema": null,
-    },
-    "./sections/BannnerGrid.tsx": {
-      "inputSchema": {
-        "title": " Bannner Grid",
-        "type": "object",
-        "properties": {
-          "images": {
-            "type": "array",
-            "items": {
-              "title": "Banner",
-              "type": "object",
-              "properties": {
-                "src": {
-                  "format": "image-uri",
-                  "type": "string",
-                  "title": "Src",
-                },
-                "alt": {
-                  "type": "string",
-                  "title": "Alt",
-                  "description": "Image alt text",
-                },
-                "href": {
-                  "type": "string",
-                  "title": "Href",
-                  "description": "When you click you go to",
-                },
-              },
-              "required": [
-                "src",
-                "alt",
-                "href",
-              ],
-            },
-            "title": "Images",
-          },
-          "title": {
-            "type": "string",
-            "title": "Title",
-          },
-        },
-        "required": [
-          "images",
-          "title",
         ],
       },
       "outputSchema": null,
