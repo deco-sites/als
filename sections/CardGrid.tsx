@@ -44,7 +44,7 @@ export default function CardGrid({
   title,
 }: Props) {
   return (
-    <div class="w-full">
+    <div class="w-full flex justify-center">
       <ul class="flex flex-col md:flex-row gap-10 md:gap-12 md:px-12 w-full max-w-[96rem] p-6">
         {cards.map(({ title, subtitle, link, button, image }) => (
           <li class="w-full flex justify-center items-stretch">
