@@ -22,8 +22,8 @@ function NavItem({
 
 function Navbar() {
   return (
-    <div class="bg-[rgba(0,0,0,.8)] text-white">
-      <section class="hidden lg:flex flex-row h-8 px-2 items-center justify-between">
+    <div class="bg-[rgba(0,0,0,.8)] text-white flex flex-col items-center">
+      <section class="hidden lg:flex flex-row h-8 px-2 items-center justify-between w-full max-w-[96rem]">
         <a href="">Free shipping on orders over $50</a>
         <a href="" class="flex gap-1 items-center">
           <img
@@ -35,7 +35,7 @@ function Navbar() {
         </a>
       </section>
 
-      <section class="w-full flex h-[50px] lg:h-[64px] items-center px-1 lg:px-4 md:border-b md:border-t border-[rgba(255,255,255,0.2)]">
+      <section class="w-full flex h-[50px] lg:h-[64px] items-center px-1 lg:px-4 md:border-b md:border-t border-[rgba(255,255,255,0.2)] max-w-[96rem]">
         <button aria-label="open menu" class="p-2 lg:hidden">
           <Icon name="Bars3" className="w-8 h-8 text-white" />
         </button>
@@ -80,7 +80,7 @@ function Navbar() {
         <Minicart />
       </section>
 
-      <section class="hidden lg:flex flex-row h-[50px] justify-center">
+      <section class="hidden lg:flex flex-row h-[50px] justify-center w-full max-w-[96rem]">
         <div class="flex w-full justify-between px-10 max-w-[1200px]">
           <NavItem href="/farm">Men's</NavItem>
           <NavItem href="/farm">Woman's</NavItem>

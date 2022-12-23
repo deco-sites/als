@@ -38,7 +38,8 @@ import * as $$$16 from "./sections/ProductShelf.tsx";
 import * as $$$17 from "./sections/Search.tsx";
 import * as $$$18 from "./sections/SearchControls.tsx";
 import * as $$$19 from "./sections/StoreFeatures.tsx";
-import * as $$$20 from "./sections/VideoCarousel.tsx";
+import * as $$$20 from "./sections/SupportLinks.tsx";
+import * as $$$21 from "./sections/VideoCarousel.tsx";
 import * as $$$$0 from "./functions/shopifyProductDetailsPage.ts";
 import * as $$$$1 from "./functions/shopifyProductList.ts";
 import * as $$$$2 from "./functions/shopifyProductListingPage.ts";
@@ -86,7 +87,8 @@ const manifest: DecoManifest = {
     "./sections/Search.tsx": $$$17,
     "./sections/SearchControls.tsx": $$$18,
     "./sections/StoreFeatures.tsx": $$$19,
-    "./sections/VideoCarousel.tsx": $$$20,
+    "./sections/SupportLinks.tsx": $$$20,
+    "./sections/VideoCarousel.tsx": $$$21,
   },
   functions: {
     "./functions/shopifyProductDetailsPage.ts": $$$$0,
@@ -645,6 +647,10 @@ const manifest: DecoManifest = {
       "outputSchema": null,
     },
     "./sections/StoreFeatures.tsx": {
+      "inputSchema": null,
+      "outputSchema": null,
+    },
+    "./sections/SupportLinks.tsx": {
       "inputSchema": null,
       "outputSchema": null,
     },

@@ -15,11 +15,11 @@ export default function BrandBar(
 ) {
   return (
     <div
-      class="w-full overflow-x-scroll"
+      class="flex w-full overflow-x-scroll justify-center"
       style={{ boxShadow: "0 8px 10px -8px rgb(0 0 0 / 12%)" }}
     >
       <ul
-        class="flex flex-row flex-nowrap justify-between md:justify-around items-center list-none py-5"
+        class="flex flex-row flex-nowrap justify-between md:justify-around items-center list-none py-5 w-full max-w-[96rem]"
         aria-label="Brands"
       >
         {brands.map(({ name, src, link }) => (

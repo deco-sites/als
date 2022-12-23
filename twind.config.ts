@@ -10,6 +10,7 @@ export default {
         "primary-light": "#f4f4f4",
         "custom-brown": "#f8f5f1",
         "custom-gray": "#3f3f40",
+        "gray": "#9f9f9f",
         "primary-red": "#D10923",
         "primary-red-light": "#DA262B",
         "primary-red-dark": "#A1061A",
