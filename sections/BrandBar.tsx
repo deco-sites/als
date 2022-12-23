@@ -1,8 +1,8 @@
-import { Image } from "$live/std/ui/types/Image.ts";
+import { Image as LiveImage } from "$live/std/ui/types/Image.ts";
 
 export interface Brand {
   name: string;
-  src: Image;
+  src: LiveImage;
   link: string;
 }
 

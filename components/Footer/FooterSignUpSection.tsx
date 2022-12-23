@@ -17,6 +17,7 @@ export default function FooterSignUpSection() {
         <button
           type="submit"
           class="rounded-full h-[30px] w-[30px] bg-primary absolute right-[3px] top-[3px]"
+          aria-label="Sign Up"
         />
       </form>
     </section>
