@@ -4,7 +4,7 @@ export interface Props {
 }
 
 export default function PromoBar(
-  { title = "Banner Thin", href = "https://deco.cx" }: Props,
+  { title = "PromoBar", href = "https://deco.cx" }: Props,
 ) {
   return (
     <div

@@ -21,27 +21,26 @@ import * as $$6 from "./islands/Slider.tsx";
 import * as $$$0 from "./sections/Banner.tsx";
 import * as $$$1 from "./sections/BannerGrid.tsx";
 import * as $$$2 from "./sections/BannerImg.tsx";
-import * as $$$3 from "./sections/BannerThin.tsx";
-import * as $$$4 from "./sections/BrandBar.tsx";
-import * as $$$5 from "./sections/Button.story.tsx";
-import * as $$$6 from "./sections/CardGrid.tsx";
-import * as $$$7 from "./sections/Carousel.tsx";
-import * as $$$8 from "./sections/Footer.tsx";
-import * as $$$9 from "./sections/Head.tsx";
-import * as $$$10 from "./sections/Header.tsx";
-import * as $$$11 from "./sections/HomeFilter.tsx";
-import * as $$$12 from "./sections/IconCart.tsx";
-import * as $$$13 from "./sections/ListLinks.tsx";
-import * as $$$14 from "./sections/MarcasConvidadas.tsx";
-import * as $$$15 from "./sections/Newsletter.tsx";
-import * as $$$16 from "./sections/ProductDetails.tsx";
-import * as $$$17 from "./sections/ProductGallery.tsx";
-import * as $$$18 from "./sections/ProductShelf.tsx";
-import * as $$$19 from "./sections/Search.tsx";
-import * as $$$20 from "./sections/SearchControls.tsx";
-import * as $$$21 from "./sections/Separator.tsx";
-import * as $$$22 from "./sections/StoreFeatures.tsx";
-import * as $$$23 from "./sections/SupportLinks.tsx";
+import * as $$$3 from "./sections/BrandBar.tsx";
+import * as $$$4 from "./sections/Button.story.tsx";
+import * as $$$5 from "./sections/CardGrid.tsx";
+import * as $$$6 from "./sections/Carousel.tsx";
+import * as $$$7 from "./sections/Footer.tsx";
+import * as $$$8 from "./sections/Head.tsx";
+import * as $$$9 from "./sections/Header.tsx";
+import * as $$$10 from "./sections/HomeFilter.tsx";
+import * as $$$11 from "./sections/IconCart.tsx";
+import * as $$$12 from "./sections/ListLinks.tsx";
+import * as $$$13 from "./sections/MarcasConvidadas.tsx";
+import * as $$$14 from "./sections/Newsletter.tsx";
+import * as $$$15 from "./sections/ProductDetails.tsx";
+import * as $$$16 from "./sections/ProductGallery.tsx";
+import * as $$$17 from "./sections/ProductShelf.tsx";
+import * as $$$18 from "./sections/Search.tsx";
+import * as $$$19 from "./sections/SearchControls.tsx";
+import * as $$$20 from "./sections/Separator.tsx";
+import * as $$$21 from "./sections/StoreFeatures.tsx";
+import * as $$$22 from "./sections/SupportLinks.tsx";
 import * as $$$$0 from "./functions/shopifyProductDetailsPage.ts";
 import * as $$$$1 from "./functions/shopifyProductList.ts";
 import * as $$$$2 from "./functions/shopifyProductListingPage.ts";
@@ -72,27 +71,26 @@ const manifest: DecoManifest = {
     "./sections/Banner.tsx": $$$0,
     "./sections/BannerGrid.tsx": $$$1,
     "./sections/BannerImg.tsx": $$$2,
-    "./sections/BannerThin.tsx": $$$3,
-    "./sections/BrandBar.tsx": $$$4,
-    "./sections/Button.story.tsx": $$$5,
-    "./sections/CardGrid.tsx": $$$6,
-    "./sections/Carousel.tsx": $$$7,
-    "./sections/Footer.tsx": $$$8,
-    "./sections/Head.tsx": $$$9,
-    "./sections/Header.tsx": $$$10,
-    "./sections/HomeFilter.tsx": $$$11,
-    "./sections/IconCart.tsx": $$$12,
-    "./sections/ListLinks.tsx": $$$13,
-    "./sections/MarcasConvidadas.tsx": $$$14,
-    "./sections/Newsletter.tsx": $$$15,
-    "./sections/ProductDetails.tsx": $$$16,
-    "./sections/ProductGallery.tsx": $$$17,
-    "./sections/ProductShelf.tsx": $$$18,
-    "./sections/Search.tsx": $$$19,
-    "./sections/SearchControls.tsx": $$$20,
-    "./sections/Separator.tsx": $$$21,
-    "./sections/StoreFeatures.tsx": $$$22,
-    "./sections/SupportLinks.tsx": $$$23,
+    "./sections/BrandBar.tsx": $$$3,
+    "./sections/Button.story.tsx": $$$4,
+    "./sections/CardGrid.tsx": $$$5,
+    "./sections/Carousel.tsx": $$$6,
+    "./sections/Footer.tsx": $$$7,
+    "./sections/Head.tsx": $$$8,
+    "./sections/Header.tsx": $$$9,
+    "./sections/HomeFilter.tsx": $$$10,
+    "./sections/IconCart.tsx": $$$11,
+    "./sections/ListLinks.tsx": $$$12,
+    "./sections/MarcasConvidadas.tsx": $$$13,
+    "./sections/Newsletter.tsx": $$$14,
+    "./sections/ProductDetails.tsx": $$$15,
+    "./sections/ProductGallery.tsx": $$$16,
+    "./sections/ProductShelf.tsx": $$$17,
+    "./sections/Search.tsx": $$$18,
+    "./sections/SearchControls.tsx": $$$19,
+    "./sections/Separator.tsx": $$$20,
+    "./sections/StoreFeatures.tsx": $$$21,
+    "./sections/SupportLinks.tsx": $$$22,
   },
   functions: {
     "./functions/shopifyProductDetailsPage.ts": $$$$0,
@@ -258,27 +256,6 @@ const manifest: DecoManifest = {
         },
         "required": [
           "imgSrc",
-        ],
-      },
-      "outputSchema": null,
-    },
-    "./sections/BannerThin.tsx": {
-      "inputSchema": {
-        "title": " Banner Thin",
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string",
-            "title": "Title",
-          },
-          "href": {
-            "type": "string",
-            "title": "Href",
-          },
-        },
-        "required": [
-          "title",
-          "href",
         ],
       },
       "outputSchema": null,
@@ -560,17 +537,20 @@ const manifest: DecoManifest = {
         "title": " Header",
         "type": "object",
         "properties": {
-          "alerts": {
-            "type": "array",
-            "items": {
-              "type": "string",
-            },
-            "title": "Alerts",
+          "promoTitle": {
+            "type": "string",
+            "title": "Promo Title",
+          },
+          "promoLink": {
+            "type": "string",
+            "title": "Promo Link",
+          },
+          "positionAbsolute": {
+            "type": "boolean",
+            "title": "Position Absolute",
           },
         },
-        "required": [
-          "alerts",
-        ],
+        "required": [],
       },
       "outputSchema": null,
     },

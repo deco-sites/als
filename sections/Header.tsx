@@ -1,7 +1,6 @@
 import type { h } from "preact";
-import Alert from "$components/Alert.tsx";
-import DecoFashionLogo from "$components/icons/DecoFashionLogo.tsx";
 import Icon from "$components/ui/Icon.tsx";
+import PromoBar from "$components/PromoBar.tsx";
 
 import Minicart from "../islands/Minicart.tsx";
 
@@ -56,7 +55,7 @@ function Navbar() {
           <form action="">
             <input
               type="search"
-              placeholder="Search Als.com"
+              placeholder="Search by product, brand, or category"
               class="w-full lg:w-[700px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
             />
             <button type="submit">
@@ -101,13 +100,18 @@ function Navbar() {
 }
 
 export interface Props {
-  alerts: string[];
+  promoTitle?: string;
+  promoLink?: string;
+  positionAbsolute?: boolean;
 }
 
-function Header({ alerts }: Props) {
+function Header({ promoTitle, promoLink, positionAbsolute }: Props) {
   return (
-    <header>
-      {/* <Alert alerts={alerts} /> */}
+    <header
+      class={`w-full z-10 ${positionAbsolute ? "absolute h-[146px]" : ""}`}
+    >
+      {(promoTitle && promoLink) &&
+        <PromoBar title={promoTitle} href={promoLink} />}
       <Navbar />
     </header>
   );
