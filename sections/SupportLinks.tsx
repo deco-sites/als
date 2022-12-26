@@ -14,6 +14,7 @@ export default function SupportLinks() {
               alt="Store hours"
               width={100}
               height={100}
+              loading="lazy"
             />
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">
@@ -38,6 +39,7 @@ export default function SupportLinks() {
               alt="Support Hours"
               width={100}
               height={100}
+              loading="lazy"
             />
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">
@@ -71,6 +73,7 @@ export default function SupportLinks() {
               alt="FAQ"
               width={100}
               height={100}
+              loading="lazy"
             />
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">

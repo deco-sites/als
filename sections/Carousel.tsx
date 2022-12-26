@@ -41,7 +41,7 @@ function Carousel({ images = [], delay = 3 }: Props) {
             { mobile, desktop, brand, title, subtitle, button, link },
             index,
           ) => (
-            <div class="h-[550px] md:min-h-[780px] w-full relative">
+            <div class="h-[600px] md:min-h-[780px] w-full relative">
               <img
                 srcset={`${mobile} 767w, ${desktop} 1024w`}
                 sizes="(max-width: 767px) 280px, 1024px"
