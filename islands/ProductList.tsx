@@ -117,7 +117,7 @@ export default function ProductList({ tabs }: Props) {
   }, [tabs, currentPosition]);
 
   return (
-    <>
+    <div class="container flex flex-col items-center">
       <div class="flex flex-row items-center bg-gray-200 rounded-full shadow-lg">
         {titles?.map((title, index) => (
           <div
@@ -128,8 +128,8 @@ export default function ProductList({ tabs }: Props) {
             onClick={() => setCurrentPosition(index)}
           >
             <h1
-              class={`py-1 px-1 text-gray-600 font-semibold ${
-                index === currentPosition ? "text-white" : ""
+              class={`py-1 px-1 font-semibold ${
+                index === currentPosition ? "text-white" : "text-gray-600"
               }`}
             >
               {title}
@@ -152,11 +152,16 @@ export default function ProductList({ tabs }: Props) {
                   <span class="absolute right-0 border-1 border-red-500 px-2 py-1 rounded-full text-xs text-red-500 bg-white">
                     Save {product.percentageDiscount}%
                   </span>
-                  <img src={product.image} />
+                  <img alt={`Product ${product.title}`} loading="lazy" src={product.image} />
                 </div>
                 <div class="flex py-2">
-                  {product.images.map((image) => (
-                    <img class="w-[48px] h-[48px]" src={image} />
+                  {product.images.map((image, index) => (
+                    <img
+                      alt={`Product image ${index}`}
+                      class="w-[48px] h-[48px]"
+                      loading="lazy"
+                      src={image}
+                    />
                   ))}
                 </div>
                 <h1 class="font-semibold text-center">{product.title}</h1>
@@ -188,6 +193,6 @@ export default function ProductList({ tabs }: Props) {
           N
         </button>
       </div>
-    </>
+    </div>
   );
 }

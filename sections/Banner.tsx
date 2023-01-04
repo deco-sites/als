@@ -44,7 +44,7 @@ export default function Banner(
 
         <div class="absolute inset-0 md:flex md:flex-col md:items-center md:justify-center text-[#4d5b31] m-[4vh] md:m-auto md:text-[#f2e9d8] md:w-[28vw]">
           <a
-            href=""
+            href="#"
             class="md:flex md:flex-col md:items-center md:justify-center w-[37.68vw] md:w-[17vw] lg:w-auto"
           >
             <div class="font-sans text-xs md:text-sm leading-4 w-[37.68vw] md:w-auto md:text-center">

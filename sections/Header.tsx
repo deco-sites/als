@@ -23,8 +23,8 @@ function Navbar() {
   return (
     <div class="bg-[rgba(0,0,0,.8)] text-white flex flex-col items-center">
       <section class="hidden lg:flex flex-row h-8 px-2 items-center justify-between w-full max-w-[96rem]">
-        <a href="">Free shipping on orders over $50</a>
-        <a href="" class="flex gap-1 items-center">
+        <a href="#">Free shipping on orders over $50</a>
+        <a href="#" class="flex gap-1 items-center">
           <img
             alt="Locations"
             class="w-3 h-3"

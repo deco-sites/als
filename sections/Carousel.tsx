@@ -73,7 +73,7 @@ function Carousel({ images = [], delay = 3 }: Props) {
           ))}
         </div>
 
-        <div class="absolute z-30 flex -translate-x-1/2 bottom-1 left-1/2">
+        <div class="absolute z-30 flex -translate-x-1/2 bottom-1 left-1/2 invisible md:visible">
           {images.map((_, index) => (
             <button
               data-dot

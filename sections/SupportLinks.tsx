@@ -24,7 +24,7 @@ export default function SupportLinks() {
             </p>
             <a
               title="Store Locations"
-              href=""
+              href="#"
               class="text-primary md:text-light-gray"
             >
               Locations
@@ -82,14 +82,14 @@ export default function SupportLinks() {
             <div class="flex flex-col">
               <a
                 title="Free Shipping"
-                href=""
+                href="#"
                 class="text-primary md:text-light-gray"
               >
                 Free Shipping
               </a>
               <a
                 title="Returns"
-                href=""
+                href="#"
                 class="text-primary md:text-light-gray"
               >
                 Returns

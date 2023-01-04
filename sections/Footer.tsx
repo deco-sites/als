@@ -41,22 +41,22 @@ export default function Footer() {
                 <a href="#">Terms & Conditions</a>
               </li>
               <li>
-                <a href="">Privacy Policy</a>
+                <a href="#">Privacy Policy</a>
               </li>
               <li>
-                <a href="">Returns / Exchanges</a>
+                <a href="#">Returns / Exchanges</a>
               </li>
               <li>
-                <a href="">Shipping</a>
+                <a href="#">Shipping</a>
               </li>
               <li>
-                <a href="">My Account</a>
+                <a href="#">My Account</a>
               </li>
               <li>
-                <a href="">Carrers</a>
+                <a href="#">Carrers</a>
               </li>
               <li>
-                <a href="">Accessibility</a>
+                <a href="#">Accessibility</a>
               </li>
             </ul>
           </nav>

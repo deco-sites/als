@@ -5,7 +5,7 @@ export default function FooterContactSection() {
     <section class="flex flex-col gap-4 py-4 items-center md:items-start border-b border-[rgba(255,255,255,0.2)] md:border-0">
       <div class="flex flex-row justify-center items-center md:justify-start gap-8 md:gap-3">
         <a
-          href=""
+          href="#"
           title="Store Locations"
           class="flex w-10 h-10 justify-center items-center"
         >
