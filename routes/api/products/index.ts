@@ -3,6 +3,6 @@ import { products } from "../../../data/products.ts";
 
 export const handler: Handlers = {
   GET() {
-    return Response.json(products.men)
+    return Response.json(products.men);
   },
 };
