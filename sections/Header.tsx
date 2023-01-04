@@ -1,35 +1,60 @@
 import type { h } from "preact";
 import Icon from "$components/ui/Icon.tsx";
 import PromoBar from "$components/PromoBar.tsx";
-import { tw, css } from 'twind/css'
+import { css, tw } from "twind/css";
 
 import Minicart from "../islands/Minicart.tsx";
 
 const navigationItems = [
   [
-    "FEATURED", "Jackets", "Pants", "Boots", "Winter", "SALE"
+    "FEATURED",
+    "Jackets",
+    "Pants",
+    "Boots",
+    "Winter",
+    "SALE",
   ],
   [
-    "Clothing", "Jackets", "Shirts", "Hoodies & Sweaters", "Pants", "Shorts", "Swimwear", "Baselayers" 
+    "Clothing",
+    "Jackets",
+    "Shirts",
+    "Hoodies & Sweaters",
+    "Pants",
+    "Shorts",
+    "Swimwear",
+    "Baselayers",
   ],
   [
-    "Footwear", "Casual", "Athlelic Sneakers", "Running", "Cross Training Shoes", "Hiking", "Sandals", "CLimbing",
+    "Footwear",
+    "Casual",
+    "Athlelic Sneakers",
+    "Running",
+    "Cross Training Shoes",
+    "Hiking",
+    "Sandals",
+    "CLimbing",
   ],
   [
-    "Accessories", "Hats", "Gloves & Mittens", "Belts", "Gaiters", "Sunglasses", "Watches"
-  ]
-]
+    "Accessories",
+    "Hats",
+    "Gloves & Mittens",
+    "Belts",
+    "Gaiters",
+    "Sunglasses",
+    "Watches",
+  ],
+];
 
 function NavItem({
-  href,  
+  href,
   children,
   class: className,
 }: h.JSX.HTMLAttributes<HTMLLIElement>) {
   const containerClass = tw(css({
-    '&:hover > div': {
-      visibility: "visible"
-    } 
-  }))
+    "&:hover > div": {
+      visibility: "visible",
+    },
+  }));
 
   return (
     <li class="flex items-center">
@@ -48,7 +73,15 @@ function NavItem({
                   <ul>
                     {items.map((item, index) => (
                       <li class="pb-1">
-                        <a class={`font-bold ${index === 0 ? "text-xl text-primary" : "text-white"}`} alt={item} href="#">{item}</a>
+                        <a
+                          class={`font-bold ${
+                            index === 0 ? "text-xl text-primary" : "text-white"
+                          }`}
+                          alt={item}
+                          href="#"
+                        >
+                          {item}
+                        </a>
                       </li>
                     ))}
                   </ul>
