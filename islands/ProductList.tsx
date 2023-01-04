@@ -152,7 +152,11 @@ export default function ProductList({ tabs }: Props) {
                   <span class="absolute right-0 border-1 border-red-500 px-2 py-1 rounded-full text-xs text-red-500 bg-white">
                     Save {product.percentageDiscount}%
                   </span>
-                  <img alt={`Product ${product.title}`} loading="lazy" src={product.image} />
+                  <img
+                    alt={`Product ${product.title}`}
+                    loading="lazy"
+                    src={product.image}
+                  />
                 </div>
                 <div class="flex py-2">
                   {product.images.map((image, index) => (
