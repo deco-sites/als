@@ -9,15 +9,17 @@ import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/_middleware.ts";
 import * as $3 from "./routes/api/cart/index.ts";
 import * as $4 from "./routes/api/cart/items.ts";
-import * as $5 from "./routes/index.tsx";
-import * as $6 from "./routes/inspect-vscode.ts";
+import * as $5 from "./routes/api/products/index.ts";
+import * as $6 from "./routes/index.tsx";
+import * as $7 from "./routes/inspect-vscode.ts";
 import * as $$0 from "./islands/AddToCart.tsx";
 import * as $$1 from "./islands/LiveControls.tsx";
 import * as $$2 from "./islands/Minicart.tsx";
 import * as $$3 from "./islands/ProductInformation.tsx";
-import * as $$4 from "./islands/SearchBar.tsx";
-import * as $$5 from "./islands/SearchControls.tsx";
-import * as $$6 from "./islands/Slider.tsx";
+import * as $$4 from "./islands/ProductList.tsx";
+import * as $$5 from "./islands/SearchBar.tsx";
+import * as $$6 from "./islands/SearchControls.tsx";
+import * as $$7 from "./islands/Slider.tsx";
 import * as $$$0 from "./sections/Banner.tsx";
 import * as $$$1 from "./sections/BannerGrid.tsx";
 import * as $$$2 from "./sections/BannerImg.tsx";
@@ -35,12 +37,13 @@ import * as $$$13 from "./sections/MarcasConvidadas.tsx";
 import * as $$$14 from "./sections/Newsletter.tsx";
 import * as $$$15 from "./sections/ProductDetails.tsx";
 import * as $$$16 from "./sections/ProductGallery.tsx";
-import * as $$$17 from "./sections/ProductShelf.tsx";
-import * as $$$18 from "./sections/Search.tsx";
-import * as $$$19 from "./sections/SearchControls.tsx";
-import * as $$$20 from "./sections/Separator.tsx";
-import * as $$$21 from "./sections/StoreFeatures.tsx";
-import * as $$$22 from "./sections/SupportLinks.tsx";
+import * as $$$17 from "./sections/ProductListSection.tsx";
+import * as $$$18 from "./sections/ProductShelf.tsx";
+import * as $$$19 from "./sections/Search.tsx";
+import * as $$$20 from "./sections/SearchControls.tsx";
+import * as $$$21 from "./sections/Separator.tsx";
+import * as $$$22 from "./sections/StoreFeatures.tsx";
+import * as $$$23 from "./sections/SupportLinks.tsx";
 import * as $$$$0 from "./functions/shopifyProductDetailsPage.ts";
 import * as $$$$1 from "./functions/shopifyProductList.ts";
 import * as $$$$2 from "./functions/shopifyProductListingPage.ts";
@@ -55,17 +58,19 @@ const manifest: DecoManifest = {
     "./routes/_middleware.ts": $2,
     "./routes/api/cart/index.ts": $3,
     "./routes/api/cart/items.ts": $4,
-    "./routes/index.tsx": $5,
-    "./routes/inspect-vscode.ts": $6,
+    "./routes/api/products/index.ts": $5,
+    "./routes/index.tsx": $6,
+    "./routes/inspect-vscode.ts": $7,
   },
   islands: {
     "./islands/AddToCart.tsx": $$0,
     "./islands/LiveControls.tsx": $$1,
     "./islands/Minicart.tsx": $$2,
     "./islands/ProductInformation.tsx": $$3,
-    "./islands/SearchBar.tsx": $$4,
-    "./islands/SearchControls.tsx": $$5,
-    "./islands/Slider.tsx": $$6,
+    "./islands/ProductList.tsx": $$4,
+    "./islands/SearchBar.tsx": $$5,
+    "./islands/SearchControls.tsx": $$6,
+    "./islands/Slider.tsx": $$7,
   },
   sections: {
     "./sections/Banner.tsx": $$$0,
@@ -85,12 +90,13 @@ const manifest: DecoManifest = {
     "./sections/Newsletter.tsx": $$$14,
     "./sections/ProductDetails.tsx": $$$15,
     "./sections/ProductGallery.tsx": $$$16,
-    "./sections/ProductShelf.tsx": $$$17,
-    "./sections/Search.tsx": $$$18,
-    "./sections/SearchControls.tsx": $$$19,
-    "./sections/Separator.tsx": $$$20,
-    "./sections/StoreFeatures.tsx": $$$21,
-    "./sections/SupportLinks.tsx": $$$22,
+    "./sections/ProductListSection.tsx": $$$17,
+    "./sections/ProductShelf.tsx": $$$18,
+    "./sections/Search.tsx": $$$19,
+    "./sections/SearchControls.tsx": $$$20,
+    "./sections/Separator.tsx": $$$21,
+    "./sections/StoreFeatures.tsx": $$$22,
+    "./sections/SupportLinks.tsx": $$$23,
   },
   functions: {
     "./functions/shopifyProductDetailsPage.ts": $$$$0,
@@ -692,6 +698,45 @@ const manifest: DecoManifest = {
         },
         "required": [
           "page",
+        ],
+      },
+      "outputSchema": null,
+    },
+    "./sections/ProductListSection.tsx": {
+      "inputSchema": {
+        "title": " Product List Section",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
+          "tabs": {
+            "type": "array",
+            "items": {
+              "title": "TabProps",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "title": "Title",
+                },
+                "category": {
+                  "type": "string",
+                  "title": "Category",
+                },
+              },
+              "required": [
+                "title",
+                "category",
+              ],
+            },
+            "title": "Tabs",
+          },
+        },
+        "required": [
+          "title",
+          "tabs",
         ],
       },
       "outputSchema": null,
