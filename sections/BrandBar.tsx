@@ -26,6 +26,8 @@ export default function BrandBar(
           <li class="flex min-w-[120px] w-36 h-auto justify-center items-center px-2">
             <a title={name} href={link}>
               <img
+                width="100%"
+                height="100%"
                 src={src}
                 alt={name}
                 class="object-cover h-12"

@@ -57,6 +57,8 @@ function Carousel({ images = [], delay = 3 }: Props) {
                   src={brand}
                   class="h-1/4 my-1"
                   alt={title}
+                  width="100%"
+                  height="100%"
                 />
                 <h3 class="text-3xl font-semibold my-2">{title}</h3>
                 <p class="my-2">{subtitle}</p>
