@@ -29,6 +29,7 @@ export default function SearchBar() {
       />
       <button
         type="submit"
+        arial-label="Buscar"
         class=" h-9 pointer-events-auto ml-8 rounded-md bg-gray-700 py-2 px-3 text-[0.8125rem] font-semibold leading-5 text-white hover:bg-black"
       >
         Buscar

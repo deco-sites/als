@@ -20,6 +20,7 @@ export default function HomeFilter() {
           </select>
           <button
             type="submit"
+            arial-label="Filtrar"
             class="border-white flex items-center h-8 border bg-black px-6 uppercase text-sm my-3 cursor-pointer py-2"
           >
             Filtrar

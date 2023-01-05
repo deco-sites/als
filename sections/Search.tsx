@@ -19,7 +19,7 @@ export default function Search({ query }: Props) {
           placeholder="O que você procura?"
         />
       </form>
-      <button type="submit" class="p-2">
+      <button type="submit" arial-label="Search" class="p-2">
         <SearchIcon />
       </button>
     </div>
