@@ -11,9 +11,9 @@ export default function Footer() {
         <div class="hidden md:flex flex-1 justify-between">
           {FooterSections.slice(0, 3).map(({ label, content }) => (
             <div class="flex flex-col mx-6">
-              <h3 class="text-primary font-semibold text-lg">
+              <h1 class="text-primary font-semibold text-lg">
                 {label}
-              </h3>
+              </h1>
               {content}
             </div>
           ))}
@@ -35,7 +35,7 @@ export default function Footer() {
         {/* Quick Links */}
         <section class="flex flex-col gap-4 py-4 items-center border-b border-[rgba(255,255,255,0.2)]">
           <nav>
-            <h3 class="text-primary font-semibold text-lg">Quick Links</h3>
+            <h1 class="text-primary font-semibold text-lg">Quick Links</h1>
             <ul class="list-none flex flex-col gap-1 my-2">
               <li>
                 <a href="#">Terms & Conditions</a>

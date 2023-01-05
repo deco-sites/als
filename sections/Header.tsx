@@ -66,7 +66,10 @@ function NavItem({
         >
           {children}
         </a>
-        <div data-menu class="mt-[13px] left-0 rigth-0 absolute box-border w-full invisible">
+        <div
+          data-menu
+          class="mt-[13px] left-0 rigth-0 absolute box-border w-full invisible"
+        >
           <section class="flex max-h-96 bg-[rgba(0,0,0,.8)] pt-4 pb-7 px-4 justify-center">
             <div class="flex gap-1.5 container justify-center">
               {navigationItems.map((items) => (

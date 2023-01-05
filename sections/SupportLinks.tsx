@@ -2,7 +2,7 @@ import links from "../data/links.ts";
 
 export default function SupportLinks() {
   return (
-    <div class="flex w-full justify-center">
+    <section class="flex w-full justify-center">
       <ul
         class="flex flex-col md:flex-row list-none py-10 gap-10 w-full max-w-[96rem]"
         aria-label="Brands"
@@ -18,7 +18,7 @@ export default function SupportLinks() {
             />
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">
-            <h3 class="font-semibold md:mb-4 text-gray">Store Hours</h3>
+            <h1 class="font-semibold md:mb-4 text-gray">Store Hours</h1>
             <p class="text-light-gray">
               Mon-Sat: 9AM-9PM<br />Sunday: Closed
             </p>
@@ -43,7 +43,7 @@ export default function SupportLinks() {
             />
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">
-            <h3 class="font-semibold md:mb-4">Support Hours</h3>
+            <h1 class="font-semibold md:mb-4">Support Hours</h1>
             <p class="text-light-gray">
               Mon-Sat: 9AM-9PM
             </p>
@@ -77,7 +77,7 @@ export default function SupportLinks() {
             />
           </div>
           <div class="w-1/2 md:w-full text-lg md:text-center">
-            <h3 class="font-semibold md:mb-4">FAQ</h3>
+            <h1 class="font-semibold md:mb-4">FAQ</h1>
             <p class="text-light-gray">Curbside Pickup</p>
             <div class="flex flex-col">
               <a
@@ -98,6 +98,6 @@ export default function SupportLinks() {
           </div>
         </li>
       </ul>
-    </div>
+    </section>
   );
 }
