@@ -129,7 +129,9 @@ function Navbar() {
       </section>
 
       <section class="hidden lg:flex flex-row h-[50px] justify-center w-full max-w-[96rem]">
-        <nav class={`flex w-full justify-between px-10 max-w-[1200px] ${containerClass}`}>
+        <nav
+          class={`flex w-full justify-between px-10 max-w-[1200px] ${containerClass}`}
+        >
           <NavItem href="/farm">Men's</NavItem>
           <NavItem href="/farm">Woman's</NavItem>
           <NavItem href="/farm">Kids'</NavItem>
@@ -155,7 +157,9 @@ function Navbar() {
                         <li class="pb-1">
                           <a
                             class={`font-bold ${
-                              index === 0 ? "text-xl text-primary" : "text-white"
+                              index === 0
+                                ? "text-xl text-primary"
+                                : "text-white"
                             }`}
                             alt={item}
                             href="#"
