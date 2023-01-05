@@ -51,14 +51,8 @@ function NavItem({
   children,
   class: className,
 }: h.JSX.HTMLAttributes<HTMLLIElement>) {
-  const containerClass = tw(css({
-    "&:hover div[data-menu]": {
-      visibility: "visible",
-    },
-  }));
-
   return (
-    <li class={`flex items-center ${containerClass}`}>
+    <li class="flex items-center">
       <div>
         <a
           href={href ?? `/search?ft=${children}`}
@@ -66,40 +60,18 @@ function NavItem({
         >
           {children}
         </a>
-        <div
-          data-menu
-          class="mt-[13px] left-0 rigth-0 absolute box-border w-full invisible"
-        >
-          <section class="flex max-h-96 bg-[rgba(0,0,0,.8)] pt-4 pb-7 px-4 justify-center">
-            <div class="flex gap-1.5 container justify-center">
-              {navigationItems.map((items) => (
-                <nav class="my-1 mx-6" style="min-width: 120px">
-                  <ul>
-                    {items.map((item, index) => (
-                      <li class="pb-1">
-                        <a
-                          class={`font-bold ${
-                            index === 0 ? "text-xl text-primary" : "text-white"
-                          }`}
-                          alt={item}
-                          href="#"
-                        >
-                          {item}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              ))}
-            </div>
-          </section>
-        </div>
       </div>
     </li>
   );
 }
 
 function Navbar() {
+  const containerClass = tw(css({
+    "&:hover div[data-menu]": {
+      visibility: "visible",
+    },
+  }));
+
   return (
     <div class="bg-[rgba(0,0,0,.8)] text-white flex flex-col items-center">
       <section class="hidden lg:flex flex-row h-8 px-2 items-center justify-between w-full max-w-[96rem]">
@@ -157,7 +129,7 @@ function Navbar() {
       </section>
 
       <section class="hidden lg:flex flex-row h-[50px] justify-center w-full max-w-[96rem]">
-        <nav class="flex w-full justify-between px-10 max-w-[1200px]">
+        <nav class={`flex w-full justify-between px-10 max-w-[1200px] ${containerClass}`}>
           <NavItem href="/farm">Men's</NavItem>
           <NavItem href="/farm">Woman's</NavItem>
           <NavItem href="/farm">Kids'</NavItem>
@@ -170,6 +142,34 @@ function Navbar() {
           <NavItem href="/farm">Water</NavItem>
           <NavItem href="/farm">Bike</NavItem>
           <NavItem href="/farm">Brands</NavItem>
+          <div
+            data-menu
+            class="mt-[50px] left-0 rigth-0 absolute box-border w-full invisible"
+          >
+            <section class="flex max-h-96 bg-[rgba(0,0,0,.8)] pt-4 pb-7 px-4 justify-center">
+              <div class="flex gap-1.5 container justify-center">
+                {navigationItems.map((items) => (
+                  <nav class="my-1 mx-6" style="min-width: 120px">
+                    <ul>
+                      {items.map((item, index) => (
+                        <li class="pb-1">
+                          <a
+                            class={`font-bold ${
+                              index === 0 ? "text-xl text-primary" : "text-white"
+                            }`}
+                            alt={item}
+                            href="#"
+                          >
+                            {item}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                ))}
+              </div>
+            </section>
+          </div>
         </nav>
       </section>
     </div>
