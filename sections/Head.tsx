@@ -84,8 +84,9 @@ export default function HeadComponent(props: Props) {
       >
       </link>
       <link
+        rel="preload"
+        as="font"
         href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500&display=swap"
-        rel="stylesheet"
       >
       </link>
 
