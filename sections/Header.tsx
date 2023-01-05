@@ -1,6 +1,7 @@
 import type { h } from "preact";
 import Icon from "$components/ui/Icon.tsx";
 import PromoBar from "$components/PromoBar.tsx";
+import Sidebar from '../islands/Sidebar.tsx'
 import { css, tw } from "twind/css";
 
 import Minicart from "../islands/Minicart.tsx";
@@ -111,9 +112,8 @@ function Navbar() {
       </section>
 
       <section class="w-full flex h-[50px] lg:h-[64px] items-center px-1 lg:px-4 md:border-b md:border-t border-[rgba(255,255,255,0.2)] max-w-[96rem]">
-        <button aria-label="open menu" class="p-2 lg:hidden">
-          <Icon name="Bars3" className="w-8 h-8 text-white" />
-        </button>
+        <Sidebar />
+        
         <img
           width="85"
           height="60"
@@ -134,8 +134,7 @@ function Navbar() {
               placeholder="Search by product, brand, or category"
               class="w-full lg:w-[700px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
             />
-            <button type="submit">
-            </button>
+            <button type="submit" />
           </form>
         </div>
         <a href="#" class="p-2 hidden lg:block" aria-label="my account">
