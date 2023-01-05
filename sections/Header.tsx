@@ -1,7 +1,7 @@
 import type { h } from "preact";
 import Icon from "$components/ui/Icon.tsx";
 import PromoBar from "$components/PromoBar.tsx";
-import Sidebar from '../islands/Sidebar.tsx'
+import Sidebar from "../islands/Sidebar.tsx";
 import { css, tw } from "twind/css";
 
 import Minicart from "../islands/Minicart.tsx";
@@ -33,7 +33,7 @@ const navigationItems = [
     "Cross Training Shoes",
     "Hiking",
     "Sandals",
-    "CLimbing",
+    "Climbing",
   ],
   [
     "Accessories",
@@ -52,21 +52,21 @@ function NavItem({
   class: className,
 }: h.JSX.HTMLAttributes<HTMLLIElement>) {
   const containerClass = tw(css({
-    "&:hover > div": {
+    "&:hover div[data-menu]": {
       visibility: "visible",
     },
   }));
 
   return (
-    <li class="flex items-center">
-      <div class={containerClass}>
+    <li class={`flex items-center ${containerClass}`}>
+      <div>
         <a
           href={href ?? `/search?ft=${children}`}
           class="text-[16px] font-medium"
         >
           {children}
         </a>
-        <div class="mt-[13px] left-0 rigth-0 absolute box-border w-full invisible">
+        <div data-menu class="mt-[13px] left-0 rigth-0 absolute box-border w-full invisible">
           <section class="flex max-h-96 bg-[rgba(0,0,0,.8)] pt-4 pb-7 px-4 justify-center">
             <div class="flex gap-1.5 container justify-center">
               {navigationItems.map((items) => (
@@ -113,7 +113,7 @@ function Navbar() {
 
       <section class="w-full flex h-[50px] lg:h-[64px] items-center px-1 lg:px-4 md:border-b md:border-t border-[rgba(255,255,255,0.2)] max-w-[96rem]">
         <Sidebar />
-        
+
         <img
           width="85"
           height="60"
