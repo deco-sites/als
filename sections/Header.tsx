@@ -131,13 +131,12 @@ function Navbar() {
 
         {/* TODO: Implement search bar */}
         <div class="flex flex-grow ml-2 mr-0 lg:ml-8 lg:mr-6 items-center justify-center">
-          <form action="">
+          <form action="#">
             <input
               type="search"
               placeholder="Search by product, brand, or category"
               class="w-full lg:w-[700px] h-8 lg:h-9 px-4 rounded-full text-white bg-[#7e7e7e] text-white placeholder-white"
             />
-            <button arial-label="Search" type="submit" />
           </form>
         </div>
         <a href="#" class="p-2 hidden lg:block" aria-label="my account">
