@@ -59,36 +59,31 @@ export default function HeadComponent(props: Props) {
         type="image/png"
         sizes="32x32"
         href="/favicon-32x32.png"
-      >
-      </link>
+      />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
         href="/favicon-16x16.png"
-      >
-      </link>
-      <link rel="manifest" href="/site.webmanifest"></link>
+      />
+      <link rel="manifest" href="/site.webmanifest"/>
       <link
         rel="mask-icon"
         href="/safari-pinned-tab.svg"
         data-color="#221E1F"
-      >
-      </link>
+      />
       {/* TODO: Optimize font loading. */}
       <link rel="preconnect" href="https://fonts.googleapis.com"></link>
       <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
         crossOrigin="true"
-      >
-      </link>
+      />
       <link
         rel="preload"
         as="style"
         href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500&display=swap"
-      >
-      </link>
+      />
 
       <meta name="theme-color" content="#221E1F"></meta>
       <meta name="msapplication-TileColor" content="#221E1F"></meta>
