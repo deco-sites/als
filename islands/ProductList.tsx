@@ -119,9 +119,9 @@ export default function ProductList({ tabs }: Props) {
 
   const boxShadowClassName = tw(css({
     "@media (min-width: 640px)": {
-      boxShadow: '0 0px 6px rgb(0 0 0 / 16%)'
-    }
-  }))
+      boxShadow: "0 0px 6px rgb(0 0 0 / 16%)",
+    },
+  }));
 
   return (
     <div class="container flex flex-col items-center">
@@ -151,7 +151,9 @@ export default function ProductList({ tabs }: Props) {
             style={`transform: translateX(-${corrosselTranslate}%)`}
           >
             {products?.map((product) => (
-              <li class={`mx-4 my-2 rounded-lg box-content w-1/4 hover:cursor-pointer ease-in-out duration-200 hover:scale-105 ${boxShadowClassName}`}>
+              <li
+                class={`mx-4 my-2 rounded-lg box-content w-1/4 hover:cursor-pointer ease-in-out duration-200 hover:scale-105 ${boxShadowClassName}`}
+              >
                 <section class="flex flex-col items-center px-6 md:px-8 py-3">
                   <div class="relative">
                     <span class="absolute right-0 border-1 border-red-500 px-2 py-1 rounded-full text-xs text-red-500 bg-white">
@@ -193,14 +195,28 @@ export default function ProductList({ tabs }: Props) {
           style="top: calc(50% - 20px)"
           onClick={previousHandle}
         >
-          <svg class="rotate-90" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z"/></svg>
+          <svg
+            class="rotate-90"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+          >
+            <path d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z" />
+          </svg>
         </button>
         <button
           class={`bg-white w-10 h-10 rounded-full absolute right-0.5 flex justify-center items-center ${boxShadowClassName}`}
           style="top: calc(50% - 20px)"
           onClick={nextHandle}
         >
-          <svg class="-rotate-90" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z"/></svg>
+          <svg
+            class="-rotate-90"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+          >
+            <path d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z" />
+          </svg>
         </button>
       </div>
     </div>
