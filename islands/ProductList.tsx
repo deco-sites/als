@@ -83,20 +83,23 @@ const colsByQueries: Record<string, number> = {
 
 function ProductPlaceholder() {
   return (
-    <li class="mx-4 my-2 rounded-lg w-1/4 bg-gray-300 hover:cursor-pointer h-[400px] animate-pulse"></li>
-  )
+    <li class="mx-4 my-2 rounded-lg w-1/4 bg-gray-300 hover:cursor-pointer h-[400px] animate-pulse">
+    </li>
+  );
 }
 
 export default function ProductList({ tabs }: Props) {
   const titles = useMemo(() => tabs?.map(({ title }) => title), []);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<MockProduct[]>([]);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const currentQuery = useMediaQuery(queries);
   const cols = colsByQueries[currentQuery] ?? 1;
   const carrosselWidth = loading ? 100 : products.length / cols * 100;
-  const corrosselTranslate = loading ? 0 : (100 / products.length) * scrollPosition * cols;
+  const corrosselTranslate = loading
+    ? 0
+    : (100 / products.length) * scrollPosition * cols;
 
   const previousHandle = () =>
     setScrollPosition((scrollPosition) =>
@@ -113,14 +116,14 @@ export default function ProductList({ tabs }: Props) {
     const abortController = new AbortController();
     const { category } = tabs[currentPosition] ?? {};
 
-    setLoading(true)
+    setLoading(true);
     fetch(`/api/products?category=${category}`, {
       signal: abortController.signal,
     })
       .then((response) => response.json())
       .then((products: MockProduct[]) => {
-        setProducts(products)
-        setLoading(false)
+        setProducts(products);
+        setLoading(false);
       });
 
     return () => {
@@ -158,11 +161,14 @@ export default function ProductList({ tabs }: Props) {
       <div class="relative w-full flex justify-center">
         <div class="relative overflow-hidden" style="width: calc(100% - 80px)">
           <ul
-            class={`flex box-content my-6 w-[${carrosselWidth}%] ${!loading ? 'ease-in-out duration-500' : ''}`}
+            class={`flex box-content my-6 w-[${carrosselWidth}%] ${
+              !loading ? "ease-in-out duration-500" : ""
+            }`}
             style={`transform: translateX(-${corrosselTranslate}%)`}
           >
-            {loading && new Array(cols).fill('').map(() => <ProductPlaceholder />)}
-            
+            {loading &&
+              new Array(cols).fill("").map(() => <ProductPlaceholder />)}
+
             {!loading && products?.map((product) => (
               <li
                 class={`mx-4 my-2 rounded-lg box-content w-1/4 hover:cursor-pointer ease-in-out duration-200 hover:scale-105 ${boxShadowClassName}`}
