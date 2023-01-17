@@ -1,8 +1,8 @@
-type Nullable<T> = T | null
+type Nullable<T> = T | null;
 
 export interface Image {
-  label?: Nullable<string>
-  url: string
+  label?: Nullable<string>;
+  url: string;
 }
 export interface Product {
   title: string;

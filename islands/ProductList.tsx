@@ -6,11 +6,11 @@ import type { Product } from "../interfaces/product.ts";
 export interface TabProps {
   title: string;
   keyword: string;
-  count?: number
+  count?: number;
 }
 
 export interface Props {
-  parentKeyword: string
+  parentKeyword: string;
   tabs: TabProps[];
 }
 
@@ -121,8 +121,8 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
     const queryParams = new URLSearchParams({
       keyword,
       parentKeyword,
-      count: String(count ?? 12)
-    })
+      count: String(count ?? 12),
+    });
 
     setLoading(true);
     fetch(`/api/products?${queryParams.toString()}`, {
@@ -207,10 +207,16 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
                     {product.description}
                   </p>
                   <div class="pt-2">
-                    <p class={`font-semibold leading-3 ${product.priceWithDiscount ? "line-through" : ""}`}>
+                    <p
+                      class={`font-semibold leading-3 ${
+                        product.priceWithDiscount ? "line-through" : ""
+                      }`}
+                    >
                       {product.price}
                     </p>
-                    <p class="font-semibold text-red-500">{product.priceWithDiscount}</p>
+                    <p class="font-semibold text-red-500">
+                      {product.priceWithDiscount}
+                    </p>
                   </div>
                 </section>
               </li>
