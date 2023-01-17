@@ -133,9 +133,9 @@ export default function ProductList({ tabs }: Props) {
 
   const boxShadowClassName = tw(css({
     "@media (min-width: 640px)": {
-      boxShadow: '0 0px 6px rgb(0 0 0 / 16%)'
-    }
-  }))
+      boxShadow: "0 0px 6px rgb(0 0 0 / 16%)",
+    },
+  }));
 
   return (
     <div class="container flex flex-col items-center">
