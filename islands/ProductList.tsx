@@ -1,14 +1,16 @@
 import { h } from "preact";
 import { useEffect, useMemo, useState } from "preact/hooks";
 import { css, tw } from "twind/css";
-import type { MockProduct } from "../interfaces/mock-product.ts";
+import type { Product } from "../interfaces/product.ts";
 
 export interface TabProps {
   title: string;
-  category: string;
+  keyword: string;
+  count?: number
 }
 
 export interface Props {
+  parentKeyword: string
   tabs: TabProps[];
 }
 
@@ -88,10 +90,10 @@ function ProductPlaceholder() {
   );
 }
 
-export default function ProductList({ tabs }: Props) {
+export default function ProductList({ parentKeyword, tabs }: Props) {
   const titles = useMemo(() => tabs?.map(({ title }) => title), []);
   const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState<MockProduct[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const currentQuery = useMediaQuery(queries);
@@ -114,14 +116,20 @@ export default function ProductList({ tabs }: Props) {
 
   useEffect(() => {
     const abortController = new AbortController();
-    const { category } = tabs[currentPosition] ?? {};
+    const { keyword, count } = tabs[currentPosition] ?? {};
+
+    const queryParams = new URLSearchParams({
+      keyword,
+      parentKeyword,
+      count: String(count ?? 12)
+    })
 
     setLoading(true);
-    fetch(`/api/products?category=${category}`, {
+    fetch(`/api/products?${queryParams.toString()}`, {
       signal: abortController.signal,
     })
       .then((response) => response.json())
-      .then((products: MockProduct[]) => {
+      .then((products: Product[]) => {
         setProducts(products);
         setLoading(false);
       });
@@ -179,18 +187,18 @@ export default function ProductList({ tabs }: Props) {
                       Save {product.percentageDiscount}%
                     </span>
                     <img
-                      alt={`Product ${product.title}`}
+                      alt={product.image.label ?? `Product ${product.title}`}
                       loading="lazy"
-                      src={product.image}
+                      src={product.image.url}
                     />
                   </div>
                   <div class="flex py-2">
                     {product.images.map((image, index) => (
                       <img
-                        alt={`Product image ${index}`}
-                        class="w-[48px] h-[48px]"
+                        alt={image.label ?? `Product image ${index}`}
+                        class="w-[48px] h-[48px] mx-1"
                         loading="lazy"
-                        src={image}
+                        src={image.url}
                       />
                     ))}
                   </div>
@@ -199,10 +207,10 @@ export default function ProductList({ tabs }: Props) {
                     {product.description}
                   </p>
                   <div class="pt-2">
-                    <p class="font-semibold line-through leading-3">
-                      ${product.priceWithDiscount}
+                    <p class={`font-semibold leading-3 ${product.priceWithDiscount ? "line-through" : ""}`}>
+                      {product.price}
                     </p>
-                    <p class="font-semibold text-red-500">${product.price}</p>
+                    <p class="font-semibold text-red-500">{product.priceWithDiscount}</p>
                   </div>
                 </section>
               </li>

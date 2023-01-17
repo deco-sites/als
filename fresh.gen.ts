@@ -715,6 +715,10 @@ const manifest: DecoManifest = {
             "type": "string",
             "title": "Title",
           },
+          "keyword": {
+            "type": "string",
+            "title": "Keyword",
+          },
           "tabs": {
             "type": "array",
             "items": {
@@ -725,14 +729,18 @@ const manifest: DecoManifest = {
                   "type": "string",
                   "title": "Title",
                 },
-                "category": {
+                "keyword": {
                   "type": "string",
-                  "title": "Category",
+                  "title": "Keyword",
+                },
+                "count": {
+                  "type": "number",
+                  "title": "Count",
                 },
               },
               "required": [
                 "title",
-                "category",
+                "keyword",
               ],
             },
             "title": "Tabs",
@@ -740,6 +748,7 @@ const manifest: DecoManifest = {
         },
         "required": [
           "title",
+          "keyword",
           "tabs",
         ],
       },
