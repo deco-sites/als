@@ -3,8 +3,8 @@ import { createClient as createShopifyClient } from "$live/std/commerce/shopify/
 
 export const vtex = createVTEXClient({
   platform: "vtex",
-  account: "lojaoffpremium",
-  defaultLocale: "pt-BR",
+  account: "alssports",
+  defaultLocale: "en-US",
   defaultSalesChannel: "1",
 });
 

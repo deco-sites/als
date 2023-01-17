@@ -290,6 +290,8 @@
     "https://esm.sh/stable/preact@10.11.0/deno/jsx-runtime.js": "b5a8e96758c20b5dea05802c6f6962b8a95bfdbd476eb4ea51cf3234f6e09271",
     "https://esm.sh/stable/preact@10.11.0/deno/preact.js": "071b515099e5dff2fe56768be62644e32fab702b194171357ccc4d7d1210144a",
     "https://esm.sh/swr@2.0.0-beta.6?alias=react:preact/compat&external=preact/compat": "f78346a491a44ce132e2a29667bae97c33c1287b143218aa0d6c2ba7ba686cab",
+    "https://esm.sh/v100/preact@10.11.0/src/index.d.ts": "1a5c331227be54be6515b0c92a469d352834fa413963ae84a39a05a3177111f6",
+    "https://esm.sh/v100/preact@10.11.0/src/jsx.d.ts": "c423715fd7992b2e1446fea11d2d04e8adbd66c1edca1ce5e85f90e0d26a2eb2",
     "https://esm.sh/v102/@builder.io/partytown@0.7.1/deno/integration.js": "41854feb6c55a7679ce71645865ba732bb4f3eed4e15880a9873bc2119b0511a",
     "https://esm.sh/v102/@builder.io/partytown@0.7.1/integration/index.d.ts": "4339e1e7822d5d1fd418be33eac7920a3b826ee3057b6f32116b81d541540365",
     "https://esm.sh/v102/@preact/signals-core@1.0.1/X-ZS8q/deno/signals-core.js": "cceff90da93a32d4885f394e83c5073b124c455e08cd95a8167503d7f962a743",
@@ -406,6 +408,13 @@
     "https://esm.sh/v96/twind@0.16.17/sheets": "343c2db26c435f148b7aed28b2c29d7bad189a279e4dab6e545ca51021565983",
     "https://esm.sh/v96/twind@0.16.17/sheets/sheets.d.ts": "0142f8ccfda2f47363add69dfa8f500d1ff23a660cf8a4eb6d42de2f2e986c68",
     "https://esm.sh/v96/twind@0.16.17/twind.d.ts": "6aaf0396186c5b0b23ec9e9f1ed6e1441813fb215e9b2c06a175573f3436cc7f",
+    "https://esm.sh/v99/preact@10.11.0/compat/src/index.d.ts": "c1f8da0c5666e296510cab41732743d593d71642ea55f57fbd19c6abae4e0192",
+    "https://esm.sh/v99/preact@10.11.0/compat/src/suspense-list.d.ts": "b8e274324392157ce476ef3a48ae215c9f7003b08525d140645f19eab20d1948",
+    "https://esm.sh/v99/preact@10.11.0/compat/src/suspense.d.ts": "81f5266e0977a94347505d11b8103024211f2b4f3b2eb2aa276a10d8fd169e65",
+    "https://esm.sh/v99/preact@10.11.0/hooks/src/index.d.ts": "5c29febb624fc25d71cb0e125848c9b711e233337a08f7eacfade38fd4c14cc3",
+    "https://esm.sh/v99/preact@10.11.0/jsx-runtime/src/index.d.ts": "e153460ed2b3fe2ad8b93696ecd48fbf73cd628b0b0ea6692b71804a3af69dfd",
+    "https://esm.sh/v99/preact@10.11.0/src/index.d.ts": "1a5c331227be54be6515b0c92a469d352834fa413963ae84a39a05a3177111f6",
+    "https://esm.sh/v99/preact@10.11.0/src/jsx.d.ts": "c423715fd7992b2e1446fea11d2d04e8adbd66c1edca1ce5e85f90e0d26a2eb2",
     "https://raw.githubusercontent.com/GoogleChrome/dialog-polyfill/5033aac1b74c44f36cde47be3d11f4756f3f8fda/dist/dialog-polyfill.esm.js": "18db62215a0d3141b411c1e15df3c6ff97c8e774afad9625af91c0ff9566352c"
   }
 }
