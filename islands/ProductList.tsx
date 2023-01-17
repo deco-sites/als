@@ -81,15 +81,25 @@ const colsByQueries: Record<string, number> = {
   "2xl": 4,
 };
 
+function ProductPlaceholder() {
+  return (
+    <li class="mx-4 my-2 rounded-lg w-1/4 bg-gray-300 hover:cursor-pointer h-[400px] animate-pulse">
+    </li>
+  );
+}
+
 export default function ProductList({ tabs }: Props) {
   const titles = useMemo(() => tabs?.map(({ title }) => title), []);
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<MockProduct[]>([]);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const currentQuery = useMediaQuery(queries);
   const cols = colsByQueries[currentQuery] ?? 1;
-  const carrosselWidth = products.length / cols * 100;
-  const corrosselTranslate = (100 / products.length) * scrollPosition * cols;
+  const carrosselWidth = loading ? 100 : products.length / cols * 100;
+  const corrosselTranslate = loading
+    ? 0
+    : (100 / products.length) * scrollPosition * cols;
 
   const previousHandle = () =>
     setScrollPosition((scrollPosition) =>
@@ -106,11 +116,15 @@ export default function ProductList({ tabs }: Props) {
     const abortController = new AbortController();
     const { category } = tabs[currentPosition] ?? {};
 
+    setLoading(true);
     fetch(`/api/products?category=${category}`, {
       signal: abortController.signal,
     })
       .then((response) => response.json())
-      .then((products: MockProduct[]) => setProducts(products));
+      .then((products: MockProduct[]) => {
+        setProducts(products);
+        setLoading(false);
+      });
 
     return () => {
       abortController.abort();
@@ -147,11 +161,18 @@ export default function ProductList({ tabs }: Props) {
       <div class="relative w-full flex justify-center">
         <div class="relative overflow-hidden" style="width: calc(100% - 80px)">
           <ul
-            class={`flex box-content ease-in-out duration-500 my-6 w-[${carrosselWidth}%]`}
+            class={`flex box-content my-6 w-[${carrosselWidth}%] ${
+              !loading ? "ease-in-out duration-500" : ""
+            }`}
             style={`transform: translateX(-${corrosselTranslate}%)`}
           >
-            {products?.map((product) => (
-              <li class={`mx-4 my-2 rounded-lg box-content w-1/4 hover:cursor-pointer ease-in-out duration-200 hover:scale-105 ${boxShadowClassName}`}>
+            {loading &&
+              new Array(cols).fill("").map(() => <ProductPlaceholder />)}
+
+            {!loading && products?.map((product) => (
+              <li
+                class={`mx-4 my-2 rounded-lg box-content w-1/4 hover:cursor-pointer ease-in-out duration-200 hover:scale-105 ${boxShadowClassName}`}
+              >
                 <section class="flex flex-col items-center px-6 md:px-8 py-3">
                   <div class="relative">
                     <span class="absolute right-0 border-1 border-red-500 px-2 py-1 rounded-full text-xs text-red-500 bg-white">
@@ -189,18 +210,34 @@ export default function ProductList({ tabs }: Props) {
           </ul>
         </div>
         <button
-          class={`bg-white w-10 h-10 rounded-full absolute left-0.5 flex justify-center items-center active:border-0 ${boxShadowClassName}`}
+          class={`bg-white w-10 h-10 rounded-full absolute left-0.5 flex justify-center items-center ${boxShadowClassName}`}
           style="top: calc(50% - 20px)"
+          aria-label="Previous page"
           onClick={previousHandle}
         >
-          <svg class="rotate-90" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z"/></svg>
+          <svg
+            class="rotate-90"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+          >
+            <path d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z" />
+          </svg>
         </button>
         <button
           class={`bg-white w-10 h-10 rounded-full absolute right-0.5 flex justify-center items-center ${boxShadowClassName}`}
           style="top: calc(50% - 20px)"
+          aria-label="Next page"
           onClick={nextHandle}
         >
-          <svg class="-rotate-90" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z"/></svg>
+          <svg
+            class="-rotate-90"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+          >
+            <path d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z" />
+          </svg>
         </button>
       </div>
     </div>
