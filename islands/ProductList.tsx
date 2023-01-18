@@ -94,7 +94,7 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
   const titles = useMemo(() => tabs?.map(({ title }) => title), []);
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
-  const [currentPosition, setCurrentPosition] = useState(0);
+  const [tabCurrentPosition, setTabCurrentPosition] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const currentQuery = useMediaQuery(queries);
   const cols = colsByQueries[currentQuery] ?? 1;
@@ -116,7 +116,7 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
 
   useEffect(() => {
     const abortController = new AbortController();
-    const { keyword, count } = tabs[currentPosition] ?? {};
+    const { keyword, count } = tabs[tabCurrentPosition] ?? {};
 
     const queryParams = new URLSearchParams({
       keyword,
@@ -137,7 +137,7 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
     return () => {
       abortController.abort();
     };
-  }, [tabs, currentPosition]);
+  }, [tabs, tabCurrentPosition]);
 
   const boxShadowClassName = tw(css({
     "@media (min-width: 640px)": {
@@ -152,13 +152,13 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
           <div
             key={title}
             class={`py-1 px-5 rounded-full hover:cursor-pointer ${
-              index === currentPosition ? "bg-[#505050] shadow-md" : ""
+              index === tabCurrentPosition ? "bg-[#505050] shadow-md" : ""
             }`}
-            onClick={() => setCurrentPosition(index)}
+            onClick={() => setTabCurrentPosition(index)}
           >
             <h1
               class={`py-1 px-1 font-semibold tracking-wider ${
-                index === currentPosition ? "text-white" : "text-[#505050]"
+                index === tabCurrentPosition ? "text-white" : "text-[#505050]"
               }`}
             >
               {title}
@@ -181,44 +181,47 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
               <li
                 class={`mx-4 my-2 rounded-lg box-content w-1/4 hover:cursor-pointer ease-in-out duration-200 hover:scale-105 ${boxShadowClassName}`}
               >
-                <section class="flex flex-col items-center px-6 md:px-8 py-3">
-                  <div class="relative">
-                    <span class="absolute right-0 border-1 border-red-500 px-2 py-1 rounded-full text-xs text-red-500 bg-white">
-                      Save {product.percentageDiscount}%
-                    </span>
-                    <img
-                      alt={product.image.label ?? `Product ${product.title}`}
-                      loading="lazy"
-                      src={product.image.url}
-                    />
-                  </div>
-                  <div class="flex py-2">
-                    {product.images.map((image, index) => (
+                <a class="flex" href={product.link}>
+                  <section class="flex flex-col items-center px-6 md:px-8 py-3">
+                    <div class="relative">
+                      <span class="absolute right-0 border-1 border-red-500 px-2 py-1 rounded-full text-xs text-red-500 bg-white">
+                        Save {product.percentageDiscount}%
+                      </span>
                       <img
-                        alt={image.label ?? `Product image ${index}`}
-                        class="w-[48px] h-[48px] mx-1"
+                        class="h-full"
+                        alt={product.image.label ?? `Product ${product.title}`}
                         loading="lazy"
-                        src={image.url}
+                        src={product.image.url}
                       />
-                    ))}
-                  </div>
-                  <h1 class="font-semibold text-center">{product.title}</h1>
-                  <p class="font-light text-sm text-center text-gray-500 pb-2">
-                    {product.description}
-                  </p>
-                  <div class="pt-2">
-                    <p
-                      class={`font-semibold leading-3 ${
-                        product.priceWithDiscount ? "line-through" : ""
-                      }`}
-                    >
-                      {product.price}
+                    </div>
+                    <div class="flex py-2">
+                      {product.images.map((image, index) => (
+                        <img
+                          alt={image.label ?? `Product image ${index}`}
+                          class="w-[48px] h-[48px] mx-1"
+                          loading="lazy"
+                          src={image.url}
+                        />
+                      ))}
+                    </div>
+                    <h1 class="font-semibold text-center">{product.title}</h1>
+                    <p class="font-light text-sm text-center text-gray-500 pb-2">
+                      {product.description}
                     </p>
-                    <p class="font-semibold text-red-500">
-                      {product.priceWithDiscount}
-                    </p>
-                  </div>
-                </section>
+                    <div class="pt-2">
+                      <p
+                        class={`font-semibold leading-3 text-center ${
+                          product.priceWithDiscount ? "line-through" : ""
+                        }`}
+                      >
+                        {product.price}
+                      </p>
+                      <p class="font-semibold text-red-500 text-center">
+                        {product.priceWithDiscount}
+                      </p>
+                    </div>
+                  </section>
+                </a>
               </li>
             ))}
           </ul>

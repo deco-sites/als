@@ -4,7 +4,7 @@ import type { ProductDetailsPage } from "$live/std/commerce/types.ts";
 
 import { vtex } from "../clients/instances.ts";
 
-const DEFAULT_SKU = 1023372;
+const DEFAULT_SKU = 580747;
 
 /**
  * @title VTEX Product Page Loader
