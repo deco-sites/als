@@ -13,5 +13,5 @@ export interface Product {
   price?: Nullable<string>;
   percentageDiscount?: Nullable<number>;
   priceWithDiscount?: Nullable<string>;
-  link: string
+  link: string;
 }

@@ -8,7 +8,7 @@ import { Head } from "$fresh/runtime.ts";
 import Image from "$live/std/ui/components/Image.tsx";
 import SKUSelector from "$components/SKUSelector.tsx";
 import { Separator } from "$components/Separator.tsx";
-import { Star } from '$components/icons/Star.tsx'
+import { Star } from "$components/icons/Star.tsx";
 import AddToCart from "../islands/AddToCart.tsx";
 
 import ProductInformation from "../islands/ProductInformation.tsx";
@@ -87,7 +87,7 @@ export function Counter() {
       <span class="text-sm">1</span>
       <span class="text-lg px-2">+</span>
     </div>
-  )
+  );
 }
 
 export default function ProductDetails({ page }: Props) {
@@ -116,24 +116,24 @@ export default function ProductDetails({ page }: Props) {
 
   const descriptionClassName = tw(css({
     "& h3,h4": {
-      fontSize: '1.25rem',
+      fontSize: "1.25rem",
       fontWeight: 600,
-      color: '#505050'
+      color: "#505050",
     },
     "& p": {
-      letterSpacing: '0.025em',
-      margin: '1rem 0',
-      color: '#505050'
+      letterSpacing: "0.025em",
+      margin: "1rem 0",
+      color: "#505050",
     },
     "& ul": {
       marginLeft: "30px",
-      listStyleType: "disc"
+      listStyleType: "disc",
     },
     "& li": {
-      letterSpacing: '0.025em',
-      color: '#505050',
-      lineHeight: '1.5rem'
-    }
+      letterSpacing: "0.025em",
+      color: "#505050",
+      lineHeight: "1.5rem",
+    },
   }));
 
   const boxShadowClassName = tw(css({
@@ -153,7 +153,6 @@ export default function ProductDetails({ page }: Props) {
           <div class="flex justify-center">
             <div class="flex w-10/12">
               <div class="flex-auto w-4/6 bg-gray-100">
-                
               </div>
               <div class="flex-auto w-2/6">
                 <h1 class="text-[#242424] text-2xl font-bold mb-4">{name}</h1>
@@ -165,31 +164,57 @@ export default function ProductDetails({ page }: Props) {
                   <Star active />
                   <Star active />
                   <Star />
-                  <p class="text-gray-400 ml-2 tracking-wide underline font-semibold">(2 reviews)</p>
-                  <p class="ml-2 tracking-wide underline text-gray-600 font-semibold">Write a review</p>
+                  <p class="text-gray-400 ml-2 tracking-wide underline font-semibold">
+                    (2 reviews)
+                  </p>
+                  <p class="ml-2 tracking-wide underline text-gray-600 font-semibold">
+                    Write a review
+                  </p>
                 </div>
                 {/* Rating Section End */}
 
                 {/* Price Section */}
                 <h2 class="mb-4">
-                  <span class="font-semibold text-red-500 leading-3 text-center text-3xl">$137.99 - $160.30</span>
-                  <span class="font-semibold leading-3 text-center text-3xl ml-3 text-gray-600 line-through">$229.00</span>
+                  <span class="font-semibold text-red-500 leading-3 text-center text-3xl">
+                    $137.99 - $160.30
+                  </span>
+                  <span class="font-semibold leading-3 text-center text-3xl ml-3 text-gray-600 line-through">
+                    $229.00
+                  </span>
                 </h2>
                 {/* Price Section End */}
-                
+
                 {/* Colors Section */}
                 <div class="mb-5">
                   <p class="font-bold text-[#2e2e2e] my-2">Color</p>
                   <div class="flex flex-wrap gap-2">
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
-                    <div class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`} />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
+                    <div
+                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
+                    />
                   </div>
                 </div>
                 {/* Colors Section End */}
@@ -198,16 +223,27 @@ export default function ProductDetails({ page }: Props) {
                 <div class="mb-5">
                   <p class="font-bold text-[#2e2e2e] my-2">Size</p>
                   <div class="flex flex-wrap gap-2">
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center"><span class="font-bold">XS</span></div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center"><span class="font-bold">S</span></div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center"><span class="font-bold">M</span></div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center"><span class="font-bold">L</span></div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center"><span class="font-bold">XS</span></div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center"><span class="font-bold">XS</span></div>
+                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
+                      <span class="font-bold">XS</span>
+                    </div>
+                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
+                      <span class="font-bold">S</span>
+                    </div>
+                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
+                      <span class="font-bold">M</span>
+                    </div>
+                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
+                      <span class="font-bold">L</span>
+                    </div>
+                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
+                      <span class="font-bold">XS</span>
+                    </div>
+                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
+                      <span class="font-bold">XS</span>
+                    </div>
                   </div>
                 </div>
                 {/* Sizes Section End */}
-
 
                 {/* Quantity Section */}
                 <div class="mb-5">
@@ -218,14 +254,19 @@ export default function ProductDetails({ page }: Props) {
 
                 <p class="mb-3 text-gray-400 text-sm">ID: 22710</p>
 
-                <button class="text-white text-xl tracking-wide font-bold bg-[#ed0000] rounded-lg p-3 w-full md:w-3/4">Add To Cart</button>
+                <button class="text-white text-xl tracking-wide font-bold bg-[#ed0000] rounded-lg p-3 w-full md:w-3/4">
+                  Add To Cart
+                </button>
               </div>
             </div>
           </div>
           {description && (
             <>
               <Separator title="Product Description" />
-              <div class={`my-6 ${descriptionClassName}`} dangerouslySetInnerHTML={{ __html: description }} />
+              <div
+                class={`my-6 ${descriptionClassName}`}
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
             </>
           )}
         </div>
