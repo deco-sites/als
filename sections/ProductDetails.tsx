@@ -1,6 +1,7 @@
 import {
   ImageObject,
   ProductDetailsPage,
+  ProductLeaf,
   UnitPriceSpecification,
 } from "$live/std/commerce/types.ts";
 import { LoaderReturnType } from "$live/std/types.ts";
@@ -11,6 +12,7 @@ import SKUSelector from "$components/SKUSelector.tsx";
 import { Separator } from "$components/Separator.tsx";
 import { Star } from "$components/icons/Star.tsx";
 import AddToCart from "../islands/AddToCart.tsx";
+import SizeImages from '../islands/SizeImages.tsx'
 
 import { PriceModel } from "../models/price-model.ts";
 
@@ -104,6 +106,16 @@ const defaultSizes = [
   "3X",
 ];
 
+const createMapByColor = (product: ProductDetailsPage['product']) => {
+  return (product.isVariantOf?.hasVariant ?? []).reduce((map, productLeaf, index) => {
+    const colorProp = (productLeaf.additionalProperty ?? []).find(({ name }) => name === 'Color')
+
+    if (colorProp && colorProp.value) map.set(colorProp.value, productLeaf)
+
+    return map
+  }, new Map<string, ProductLeaf>())
+}
+
 export default function ProductDetails({ page }: Props) {
   if (!page) {
     return null;
@@ -142,25 +154,17 @@ export default function ProductDetails({ page }: Props) {
     },
   }));
 
-  const sizeImages = (product.isVariantOf?.hasVariant ?? [])
+
+  const map = createMapByColor(product)  
+
+  const sizeImages = [...map.values()]
     .map((productItem) => {
-      if (productItem.image && productItem.image[0]) {
-        return productItem.image[0];
-      }
+      if (productItem?.image?.at(0))
+        return productItem?.image?.at(0);
 
       return null;
     })
-    .filter((item): item is ImageObject => !!item)
-    .reduce((previousItems, currentItem) => {
-      if (
-        previousItems.length === 0 ||
-        previousItems.some((item) => item.url !== currentItem.url)
-      ) {
-        previousItems.push(currentItem);
-      }
-
-      return previousItems;
-    }, [] as ImageObject[]);
+    .filter((item): item is ImageObject  => !!item)
 
   return (
     <>
@@ -174,7 +178,7 @@ export default function ProductDetails({ page }: Props) {
           <div class="flex justify-center">
             <div class="flex flex-col md:flex-row w-10/12">
               <div class="flex-auto flex flex-col w-full md:w-4/6 mb-5 md:mb-0">
-                <ProductImage product={product} />
+                <ProductImage items={map} />
               </div>
               <div class="flex-auto w-full md:w-2/6">
                 <h1 class="text-[#242424] text-3xl font-bold mb-4">
@@ -223,25 +227,7 @@ export default function ProductDetails({ page }: Props) {
                 <div class="mb-5">
                   <p class="font-bold text-[#2e2e2e] my-2">Color</p>
                   <div class="flex flex-wrap gap-2">
-                    {sizeImages &&
-                      sizeImages.map((imageData, index) => (
-                        <button
-                          aria-label={imageData.alternateName}
-                          class={`w-[78px] h-[78px] p-2 rounded-lg cursor-pointer ${boxShadowClassName}`}
-                        >
-                          <Image
-                            class="w-full max-w-full h-auto"
-                            src={imageData.url ?? ""}
-                            alt={imageData.alternateName
-                              ? imageData.alternateName
-                              : `Product image ${index}: ${product.name}`}
-                            width={75}
-                            height={75}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        </button>
-                      ))}
+                    <SizeImages images={sizeImages} />
                   </div>
                 </div>
                 {/* Colors Section End */}

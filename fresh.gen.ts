@@ -22,7 +22,8 @@ import * as $$6 from "./islands/ProductList.tsx";
 import * as $$7 from "./islands/SearchBar.tsx";
 import * as $$8 from "./islands/SearchControls.tsx";
 import * as $$9 from "./islands/Sidebar.tsx";
-import * as $$10 from "./islands/Slider.tsx";
+import * as $$10 from "./islands/SizeImages.tsx";
+import * as $$11 from "./islands/Slider.tsx";
 import * as $$$0 from "./sections/Banner.tsx";
 import * as $$$1 from "./sections/BannerGrid.tsx";
 import * as $$$2 from "./sections/BannerImg.tsx";
@@ -77,7 +78,8 @@ const manifest: DecoManifest = {
     "./islands/SearchBar.tsx": $$7,
     "./islands/SearchControls.tsx": $$8,
     "./islands/Sidebar.tsx": $$9,
-    "./islands/Slider.tsx": $$10,
+    "./islands/SizeImages.tsx": $$10,
+    "./islands/Slider.tsx": $$11,
   },
   sections: {
     "./sections/Banner.tsx": $$$0,
