@@ -161,7 +161,7 @@ export default function ProductDetails({ page }: Props) {
 
   const map = createMapByColor(product);
 
-  const items =[...map.values()]
+  const items = [...map.values()];
 
   const sizeImages = [...map.values()]
     .map((productItem) => {
