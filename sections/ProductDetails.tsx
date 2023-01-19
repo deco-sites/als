@@ -166,12 +166,13 @@ export default function ProductDetails({ page }: Props) {
       <Head>
         <ScriptLDJson {...page.product} />
         <ScriptLDJson {...page.breadcrumbList} />
+        <title>{product.name ?? "Product name"}</title>
       </Head>
       <section class="w-full flex justify-center">
         <div class="max-w-[96rem] flex flex-col pt-12 px-10">
           <div class="flex justify-center">
-            <div class="flex w-10/12">
-              <div class="flex-auto flex flex-col w-4/6">
+            <div class="flex flex-col md:flex-row w-10/12">
+              <div class="flex-auto flex flex-col w-full md:w-4/6 mb-5 md:mb-0">
                 <div class="flex-1 flex justify-center">
                   <div class="w-[450px] h-full flex justify-center cursor-zoom-in">
                     {product.image && product.image[0] && (
@@ -211,7 +212,7 @@ export default function ProductDetails({ page }: Props) {
                     ))}
                 </div>
               </div>
-              <div class="flex-auto w-2/6">
+              <div class="flex-auto w-full md:w-2/6">
                 <h1 class="text-[#242424] text-3xl font-bold mb-4">
                   {product.name}
                 </h1>
@@ -260,7 +261,8 @@ export default function ProductDetails({ page }: Props) {
                   <div class="flex flex-wrap gap-2">
                     {sizeImages &&
                       sizeImages.map((imageData, index) => (
-                        <div
+                        <button
+                          aria-label={imageData.alternateName}
                           class={`w-[78px] h-[78px] p-2 rounded-lg cursor-pointer ${boxShadowClassName}`}
                         >
                           <Image
@@ -274,7 +276,7 @@ export default function ProductDetails({ page }: Props) {
                             loading="lazy"
                             decoding="async"
                           />
-                        </div>
+                        </button>
                       ))}
                   </div>
                 </div>
@@ -285,9 +287,12 @@ export default function ProductDetails({ page }: Props) {
                   <p class="font-bold text-[#2e2e2e] my-2">Size</p>
                   <div class="flex flex-wrap gap-2">
                     {defaultSizes.map((size) => (
-                      <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center cursor-pointer">
+                      <button 
+                        aria-label={`Size ${size}`}
+                        class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center cursor-pointer"
+                      >
                         <span class="font-bold">{size}</span>
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
