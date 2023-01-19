@@ -1,15 +1,20 @@
-import { useState } from 'preact/hooks'
-import type { ImageObject, ProductDetailsPage } from "$live/std/commerce/types.ts";
+import { useState } from "preact/hooks";
+import type {
+  ImageObject,
+  ProductDetailsPage,
+} from "$live/std/commerce/types.ts";
 import Image from "$live/std/ui/components/Image.tsx";
 import { css, tw } from "twind/css";
 
 export interface Props {
-  product: ProductDetailsPage['product']
+  product: ProductDetailsPage["product"];
 }
 
 export default function ProductImage({ product }: Props) {
-  const [selected, setSelected] = useState(0)
-  const mainImage: ImageObject | undefined | null = product?.image?.at(selected)
+  const [selected, setSelected] = useState(0);
+  const mainImage: ImageObject | undefined | null = product?.image?.at(
+    selected,
+  );
 
   const boxShadowClassName = tw(css({
     "@media (min-width: 640px)": {
@@ -46,7 +51,9 @@ export default function ProductImage({ product }: Props) {
               class={`w-[85px] h-[85px] rounded-lg p-2 cursor-pointer ${boxShadowClassName}`}
             >
               <Image
-                class={`w-full max-w-full h-auto ${index !== selected ? "opacity-40" : ""}`}
+                class={`w-full max-w-full h-auto ${
+                  index !== selected ? "opacity-40" : ""
+                }`}
                 src={imageData.url ?? ""}
                 alt={imageData.alternateName
                   ? imageData.alternateName
@@ -60,5 +67,5 @@ export default function ProductImage({ product }: Props) {
           ))}
       </div>
     </>
-  )
+  );
 }
