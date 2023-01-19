@@ -287,7 +287,7 @@ export default function ProductDetails({ page }: Props) {
                   <p class="font-bold text-[#2e2e2e] my-2">Size</p>
                   <div class="flex flex-wrap gap-2">
                     {defaultSizes.map((size) => (
-                      <button 
+                      <button
                         aria-label={`Size ${size}`}
                         class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center cursor-pointer"
                       >
