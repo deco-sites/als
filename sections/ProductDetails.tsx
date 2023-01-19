@@ -1,5 +1,5 @@
 import {
-ImageObject,
+  ImageObject,
   ProductDetailsPage,
   UnitPriceSpecification,
 } from "$live/std/commerce/types.ts";
@@ -12,7 +12,7 @@ import { Separator } from "$components/Separator.tsx";
 import { Star } from "$components/icons/Star.tsx";
 import AddToCart from "../islands/AddToCart.tsx";
 
-import { PriceModel } from '../models/price-model.ts'
+import { PriceModel } from "../models/price-model.ts";
 
 import ProductInformation from "../islands/ProductInformation.tsx";
 
@@ -100,8 +100,8 @@ const defaultSizes = [
   "L",
   "XL",
   "XX",
-  "3X"
-]
+  "3X",
+];
 
 export default function ProductDetails({ page }: Props) {
   if (!page) {
@@ -143,18 +143,23 @@ export default function ProductDetails({ page }: Props) {
 
   const sizeImages = (product.isVariantOf?.hasVariant ?? [])
     .map((productItem) => {
-      if (productItem.image && productItem.image[0]) return productItem.image[0]
-      
-      return null
+      if (productItem.image && productItem.image[0]) {
+        return productItem.image[0];
+      }
+
+      return null;
     })
     .filter((item): item is ImageObject => !!item)
     .reduce((previousItems, currentItem) => {
-      if (previousItems.length === 0 || previousItems.some(item => item.url !== currentItem.url)) {
-        previousItems.push(currentItem)
+      if (
+        previousItems.length === 0 ||
+        previousItems.some((item) => item.url !== currentItem.url)
+      ) {
+        previousItems.push(currentItem);
       }
 
-      return previousItems
-    }, [] as ImageObject[])
+      return previousItems;
+    }, [] as ImageObject[]);
 
   return (
     <>
@@ -173,7 +178,9 @@ export default function ProductDetails({ page }: Props) {
                       <Image
                         class="w-full max-w-full h-auto"
                         src={product.image[0].url ?? ""}
-                        alt={product.image[0].alternateName ? product.image[0].alternateName : `Main product: ${product.name}`}
+                        alt={product.image[0].alternateName
+                          ? product.image[0].alternateName
+                          : `Main product: ${product.name}`}
                         width={326}
                         height={489}
                         sizes="(max-width: 640px) 40vw, 20vw"
@@ -184,23 +191,30 @@ export default function ProductDetails({ page }: Props) {
                   </div>
                 </div>
                 <div class="flex gap-2 my-5 justify-center">
-                  {product.image && product.image.map((imageData, index) => (
-                    <div class={`w-[85px] h-[85px] rounded-lg p-2 cursor-pointer ${boxShadowClassName}`}>  
-                      <Image
-                        class="w-full max-w-full h-auto opacity-40"
-                        src={imageData.url ?? ""}
-                        alt={imageData.alternateName ? imageData.alternateName : `Product image ${index}: ${product.name}`}
-                        width={75}
-                        height={75}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  ))}
+                  {product.image &&
+                    product.image.map((imageData, index) => (
+                      <div
+                        class={`w-[85px] h-[85px] rounded-lg p-2 cursor-pointer ${boxShadowClassName}`}
+                      >
+                        <Image
+                          class="w-full max-w-full h-auto opacity-40"
+                          src={imageData.url ?? ""}
+                          alt={imageData.alternateName
+                            ? imageData.alternateName
+                            : `Product image ${index}: ${product.name}`}
+                          width={75}
+                          height={75}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    ))}
                 </div>
               </div>
               <div class="flex-auto w-2/6">
-                <h1 class="text-[#242424] text-3xl font-bold mb-4">{product.name}</h1>
+                <h1 class="text-[#242424] text-3xl font-bold mb-4">
+                  {product.name}
+                </h1>
 
                 {/* Rating Section */}
                 <div class="flex mb-4">
@@ -209,10 +223,16 @@ export default function ProductDetails({ page }: Props) {
                   <Star active />
                   <Star active />
                   <Star />
-                  <a href="#" class="text-gray-400 ml-2 tracking-wide underline font-semibold">
+                  <a
+                    href="#"
+                    class="text-gray-400 ml-2 tracking-wide underline font-semibold"
+                  >
                     (2 reviews)
                   </a>
-                  <a href="#" class="ml-2 tracking-wide underline text-gray-600 font-semibold">
+                  <a
+                    href="#"
+                    class="ml-2 tracking-wide underline text-gray-600 font-semibold"
+                  >
                     Write a review
                   </a>
                 </div>
@@ -221,11 +241,16 @@ export default function ProductDetails({ page }: Props) {
                 {/* Price Section */}
                 <h2 class="mb-4">
                   <span class="font-semibold text-red-500 leading-3 text-center text-2xl">
-                    {PriceModel.create(product.offers?.lowPrice, product.offers?.highPrice)}
+                    {PriceModel.create(
+                      product.offers?.lowPrice,
+                      product.offers?.highPrice,
+                    )}
                   </span>
-                  {/* <span class="font-semibold leading-3 text-center text-2xl ml-3 text-gray-600 line-through">
+                  {
+                    /* <span class="font-semibold leading-3 text-center text-2xl ml-3 text-gray-600 line-through">
                     ${PriceModel.create(product.offers?.lowPrice)}
-                  </span> */}
+                  </span> */
+                  }
                 </h2>
                 {/* Price Section End */}
 
@@ -233,19 +258,24 @@ export default function ProductDetails({ page }: Props) {
                 <div class="mb-5">
                   <p class="font-bold text-[#2e2e2e] my-2">Color</p>
                   <div class="flex flex-wrap gap-2">
-                    {sizeImages && sizeImages.map((imageData, index) => (
-                      <div class={`w-[78px] h-[78px] p-2 rounded-lg cursor-pointer ${boxShadowClassName}`}>
-                        <Image
-                          class="w-full max-w-full h-auto"
-                          src={imageData.url ?? ""}
-                          alt={imageData.alternateName ? imageData.alternateName : `Product image ${index}: ${product.name}`}
-                          width={75}
-                          height={75}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                    ))}
+                    {sizeImages &&
+                      sizeImages.map((imageData, index) => (
+                        <div
+                          class={`w-[78px] h-[78px] p-2 rounded-lg cursor-pointer ${boxShadowClassName}`}
+                        >
+                          <Image
+                            class="w-full max-w-full h-auto"
+                            src={imageData.url ?? ""}
+                            alt={imageData.alternateName
+                              ? imageData.alternateName
+                              : `Product image ${index}: ${product.name}`}
+                            width={75}
+                            height={75}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      ))}
                   </div>
                 </div>
                 {/* Colors Section End */}
@@ -254,7 +284,7 @@ export default function ProductDetails({ page }: Props) {
                 <div class="mb-5">
                   <p class="font-bold text-[#2e2e2e] my-2">Size</p>
                   <div class="flex flex-wrap gap-2">
-                    {defaultSizes.map(size => (
+                    {defaultSizes.map((size) => (
                       <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center cursor-pointer">
                         <span class="font-bold">{size}</span>
                       </div>

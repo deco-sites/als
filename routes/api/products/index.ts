@@ -1,6 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
 import { vtex } from "../../../clients/instances.ts";
-import { PriceModel } from '../../../models/price-model.ts'
+import { PriceModel } from "../../../models/price-model.ts";
 
 import type { Product as ProductVTEX } from "$live/std/commerce/vtex/types.ts";
 import type { Image, Product } from "../../../interfaces/product.ts";
