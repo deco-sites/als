@@ -1,21 +1,18 @@
 import { useState } from "preact/hooks";
-import type {
-  ImageObject,
-  ProductLeaf,
-} from "$live/std/commerce/types.ts";
+import type { ImageObject, ProductLeaf } from "$live/std/commerce/types.ts";
 import Image from "$live/std/ui/components/Image.tsx";
 import { css, tw } from "twind/css";
 
 export interface Props {
-  items: Map<string, ProductLeaf>
+  items: Map<string, ProductLeaf>;
 }
 
 export default function ProductImage({ items }: Props) {
   const [selected, setSelected] = useState(0);
-  const [productSelectedIndex] = useState(0)
-  const products = [...items.values()]
+  const [productSelectedIndex] = useState(0);
+  const products = [...items.values()];
 
-  const selectedProduct = products[productSelectedIndex]
+  const selectedProduct = products[productSelectedIndex];
   const mainImage: ImageObject | undefined | null = selectedProduct?.image?.at(
     selected,
   );
@@ -51,7 +48,7 @@ export default function ProductImage({ items }: Props) {
             <button
               aria-label="Change main image"
               onClick={() => {
-                setSelected(index)
+                setSelected(index);
               }}
               class={`w-[85px] h-[85px] rounded-lg p-2 cursor-pointer ${boxShadowClassName}`}
             >

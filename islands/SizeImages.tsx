@@ -3,7 +3,7 @@ import Image from "$live/std/ui/components/Image.tsx";
 import { css, tw } from "twind/css";
 
 export interface Props {
-  images?: ImageObject[]
+  images?: ImageObject[];
 }
 
 export default function SizeImages({ images }: Props) {
@@ -17,7 +17,7 @@ export default function SizeImages({ images }: Props) {
     <>
       {images && images.map((imageData, index) => (
         <button
-          aria-label={imageData.alternateName}          
+          aria-label={imageData.alternateName}
           class={`w-[78px] h-[78px] p-2 rounded-lg cursor-pointer ${boxShadowClassName}`}
         >
           <Image
@@ -34,5 +34,5 @@ export default function SizeImages({ images }: Props) {
         </button>
       ))}
     </>
-  )
+  );
 }

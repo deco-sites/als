@@ -12,7 +12,7 @@ import SKUSelector from "$components/SKUSelector.tsx";
 import { Separator } from "$components/Separator.tsx";
 import { Star } from "$components/icons/Star.tsx";
 import AddToCart from "../islands/AddToCart.tsx";
-import SizeImages from '../islands/SizeImages.tsx'
+import SizeImages from "../islands/SizeImages.tsx";
 
 import { PriceModel } from "../models/price-model.ts";
 
@@ -106,15 +106,20 @@ const defaultSizes = [
   "3X",
 ];
 
-const createMapByColor = (product: ProductDetailsPage['product']) => {
-  return (product.isVariantOf?.hasVariant ?? []).reduce((map, productLeaf, index) => {
-    const colorProp = (productLeaf.additionalProperty ?? []).find(({ name }) => name === 'Color')
+const createMapByColor = (product: ProductDetailsPage["product"]) => {
+  return (product.isVariantOf?.hasVariant ?? []).reduce(
+    (map, productLeaf, index) => {
+      const colorProp = (productLeaf.additionalProperty ?? []).find((
+        { name },
+      ) => name === "Color");
 
-    if (colorProp && colorProp.value) map.set(colorProp.value, productLeaf)
+      if (colorProp && colorProp.value) map.set(colorProp.value, productLeaf);
 
-    return map
-  }, new Map<string, ProductLeaf>())
-}
+      return map;
+    },
+    new Map<string, ProductLeaf>(),
+  );
+};
 
 export default function ProductDetails({ page }: Props) {
   if (!page) {
@@ -154,17 +159,17 @@ export default function ProductDetails({ page }: Props) {
     },
   }));
 
-
-  const map = createMapByColor(product)  
+  const map = createMapByColor(product);
 
   const sizeImages = [...map.values()]
     .map((productItem) => {
-      if (productItem?.image?.at(0))
+      if (productItem?.image?.at(0)) {
         return productItem?.image?.at(0);
+      }
 
       return null;
     })
-    .filter((item): item is ImageObject  => !!item)
+    .filter((item): item is ImageObject => !!item);
 
   return (
     <>
