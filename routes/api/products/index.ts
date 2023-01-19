@@ -1,38 +1,11 @@
 import { Handlers } from "$fresh/server.ts";
 import { vtex } from "../../../clients/instances.ts";
+import { PriceModel } from '../../../models/price-model.ts'
 
 import type { Product as ProductVTEX } from "$live/std/commerce/vtex/types.ts";
 import type { Image, Product } from "../../../interfaces/product.ts";
 
 type ImageVTEX = ProductVTEX["items"][0]["images"][0];
-type Nullable<T> = T | null;
-
-const PriceModel = {
-  format: (value: number) => {
-    const formatter = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-
-    return formatter.format(value);
-  },
-  create: (
-    lowPrice: Nullable<number>,
-    highPrice?: Nullable<number>,
-  ): string => {
-    if (!lowPrice) return "";
-
-    if (lowPrice === highPrice) {
-      return PriceModel.format(lowPrice);
-    }
-
-    if (!highPrice) return "";
-
-    return `${PriceModel.format(lowPrice)} - ${PriceModel.format(highPrice)}`;
-  },
-};
 
 export const ImageMapper = {
   create: (imageData: ImageVTEX): Image => ({

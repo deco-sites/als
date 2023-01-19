@@ -1,4 +1,5 @@
 import {
+ImageObject,
   ProductDetailsPage,
   UnitPriceSpecification,
 } from "$live/std/commerce/types.ts";
@@ -10,6 +11,8 @@ import SKUSelector from "$components/SKUSelector.tsx";
 import { Separator } from "$components/Separator.tsx";
 import { Star } from "$components/icons/Star.tsx";
 import AddToCart from "../islands/AddToCart.tsx";
+
+import { PriceModel } from '../models/price-model.ts'
 
 import ProductInformation from "../islands/ProductInformation.tsx";
 
@@ -83,12 +86,22 @@ export const installmentToString = (
 export function Counter() {
   return (
     <div class="h-[20px] w-[120px] rounded-full p-3 border-2 border-gray-900 flex justify-center items-center justify-between">
-      <span class="text-lg px-2">-</span>
+      <span class="text-lg px-2 cursor-pointer">-</span>
       <span class="text-sm">1</span>
       <span class="text-lg px-2">+</span>
     </div>
   );
 }
+
+const defaultSizes = [
+  "XS",
+  "S",
+  "M",
+  "L",
+  "XL",
+  "XX",
+  "3X"
+]
 
 export default function ProductDetails({ page }: Props) {
   if (!page) {
@@ -96,23 +109,9 @@ export default function ProductDetails({ page }: Props) {
   }
 
   const {
-    product: {
-      image,
-      name,
-      productID,
-      offers: aggregateOffer,
-      description,
-      isVariantOf,
-    },
+    product,
     breadcrumbList: { numberOfItems, itemListElement },
   } = page;
-  const offer = aggregateOffer?.offers[0];
-  const listPrice = offer?.priceSpecification.find((spec) =>
-    spec.priceType === "https://schema.org/ListPrice"
-  );
-  const installment = offer?.priceSpecification.reduce(bestInstallment, null);
-  const seller = offer?.seller;
-  const price = offer?.price;
 
   const descriptionClassName = tw(css({
     "& h3,h4": {
@@ -142,6 +141,21 @@ export default function ProductDetails({ page }: Props) {
     },
   }));
 
+  const sizeImages = (product.isVariantOf?.hasVariant ?? [])
+    .map((productItem) => {
+      if (productItem.image && productItem.image[0]) return productItem.image[0]
+      
+      return null
+    })
+    .filter((item): item is ImageObject => !!item)
+    .reduce((previousItems, currentItem) => {
+      if (previousItems.length === 0 || previousItems.some(item => item.url !== currentItem.url)) {
+        previousItems.push(currentItem)
+      }
+
+      return previousItems
+    }, [] as ImageObject[])
+
   return (
     <>
       <Head>
@@ -152,10 +166,41 @@ export default function ProductDetails({ page }: Props) {
         <div class="max-w-[96rem] flex flex-col pt-12 px-10">
           <div class="flex justify-center">
             <div class="flex w-10/12">
-              <div class="flex-auto w-4/6 bg-gray-100">
+              <div class="flex-auto flex flex-col w-4/6">
+                <div class="flex-1 flex justify-center">
+                  <div class="w-[450px] h-full flex justify-center cursor-zoom-in">
+                    {product.image && product.image[0] && (
+                      <Image
+                        class="w-full max-w-full h-auto"
+                        src={product.image[0].url ?? ""}
+                        alt={product.image[0].alternateName ? product.image[0].alternateName : `Main product: ${product.name}`}
+                        width={326}
+                        height={489}
+                        sizes="(max-width: 640px) 40vw, 20vw"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </div>
+                </div>
+                <div class="flex gap-2 my-5 justify-center">
+                  {product.image && product.image.map((imageData, index) => (
+                    <div class={`w-[85px] h-[85px] rounded-lg p-2 cursor-pointer ${boxShadowClassName}`}>  
+                      <Image
+                        class="w-full max-w-full h-auto opacity-40"
+                        src={imageData.url ?? ""}
+                        alt={imageData.alternateName ? imageData.alternateName : `Product image ${index}: ${product.name}`}
+                        width={75}
+                        height={75}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
               <div class="flex-auto w-2/6">
-                <h1 class="text-[#242424] text-2xl font-bold mb-4">{name}</h1>
+                <h1 class="text-[#242424] text-3xl font-bold mb-4">{product.name}</h1>
 
                 {/* Rating Section */}
                 <div class="flex mb-4">
@@ -164,23 +209,23 @@ export default function ProductDetails({ page }: Props) {
                   <Star active />
                   <Star active />
                   <Star />
-                  <p class="text-gray-400 ml-2 tracking-wide underline font-semibold">
+                  <a href="#" class="text-gray-400 ml-2 tracking-wide underline font-semibold">
                     (2 reviews)
-                  </p>
-                  <p class="ml-2 tracking-wide underline text-gray-600 font-semibold">
+                  </a>
+                  <a href="#" class="ml-2 tracking-wide underline text-gray-600 font-semibold">
                     Write a review
-                  </p>
+                  </a>
                 </div>
                 {/* Rating Section End */}
 
                 {/* Price Section */}
                 <h2 class="mb-4">
-                  <span class="font-semibold text-red-500 leading-3 text-center text-3xl">
-                    $137.99 - $160.30
+                  <span class="font-semibold text-red-500 leading-3 text-center text-2xl">
+                    {PriceModel.create(product.offers?.lowPrice, product.offers?.highPrice)}
                   </span>
-                  <span class="font-semibold leading-3 text-center text-3xl ml-3 text-gray-600 line-through">
-                    $229.00
-                  </span>
+                  {/* <span class="font-semibold leading-3 text-center text-2xl ml-3 text-gray-600 line-through">
+                    ${PriceModel.create(product.offers?.lowPrice)}
+                  </span> */}
                 </h2>
                 {/* Price Section End */}
 
@@ -188,33 +233,19 @@ export default function ProductDetails({ page }: Props) {
                 <div class="mb-5">
                   <p class="font-bold text-[#2e2e2e] my-2">Color</p>
                   <div class="flex flex-wrap gap-2">
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
-                    <div
-                      class={`w-[78px] h-[78px] bg-gray-300 rounded-lg ${boxShadowClassName}`}
-                    />
+                    {sizeImages && sizeImages.map((imageData, index) => (
+                      <div class={`w-[78px] h-[78px] p-2 rounded-lg cursor-pointer ${boxShadowClassName}`}>
+                        <Image
+                          class="w-full max-w-full h-auto"
+                          src={imageData.url ?? ""}
+                          alt={imageData.alternateName ? imageData.alternateName : `Product image ${index}: ${product.name}`}
+                          width={75}
+                          height={75}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
                 {/* Colors Section End */}
@@ -223,24 +254,11 @@ export default function ProductDetails({ page }: Props) {
                 <div class="mb-5">
                   <p class="font-bold text-[#2e2e2e] my-2">Size</p>
                   <div class="flex flex-wrap gap-2">
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
-                      <span class="font-bold">XS</span>
-                    </div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
-                      <span class="font-bold">S</span>
-                    </div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
-                      <span class="font-bold">M</span>
-                    </div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
-                      <span class="font-bold">L</span>
-                    </div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
-                      <span class="font-bold">XS</span>
-                    </div>
-                    <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center">
-                      <span class="font-bold">XS</span>
-                    </div>
+                    {defaultSizes.map(size => (
+                      <div class="rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center cursor-pointer">
+                        <span class="font-bold">{size}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 {/* Sizes Section End */}
@@ -252,20 +270,24 @@ export default function ProductDetails({ page }: Props) {
                 </div>
                 {/* Quantity Section End */}
 
-                <p class="mb-3 text-gray-400 text-sm">ID: 22710</p>
+                {/* ID Section */}
+                <p class="mb-3 text-gray-400 text-sm">ID: {product.sku}</p>
+                {/* ID Section End */}
 
+                {/* Button Add Cart */}
                 <button class="text-white text-xl tracking-wide font-bold bg-[#ed0000] rounded-lg p-3 w-full md:w-3/4">
                   Add To Cart
                 </button>
+                {/* Button Add Cart End */}
               </div>
             </div>
           </div>
-          {description && (
+          {product?.description && (
             <>
               <Separator title="Product Description" />
               <div
                 class={`my-6 ${descriptionClassName}`}
-                dangerouslySetInnerHTML={{ __html: description }}
+                dangerouslySetInnerHTML={{ __html: product.description }}
               />
             </>
           )}
