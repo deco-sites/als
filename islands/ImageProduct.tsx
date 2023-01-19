@@ -4,15 +4,16 @@ import Image from "$live/std/ui/components/Image.tsx";
 import { css, tw } from "twind/css";
 
 export interface Props {
-  items: Map<string, ProductLeaf>;
+  items?: ProductLeaf[];
 }
 
 export default function ProductImage({ items }: Props) {
-  const [selected, setSelected] = useState(0);
-  const [productSelectedIndex] = useState(0);
-  const products = [...items.values()];
+  if (!items || items.length === 0) return <></>;
 
-  const selectedProduct = products[productSelectedIndex];
+  const [selected, setSelected] = useState(0);
+  const products = items;
+
+  const selectedProduct = products?.at(0);
   const mainImage: ImageObject | undefined | null = selectedProduct?.image?.at(
     selected,
   );
@@ -27,7 +28,7 @@ export default function ProductImage({ items }: Props) {
     <>
       <div class="flex justify-center">
         <div class="w-[550px] h-[600px] h-full flex justify-center cursor-zoom-in px-5">
-          {mainImage && (
+          {mainImage && selectedProduct && (
             <Image
               class="object-contain	h-full w-full aspect-auto"
               src={mainImage.url ?? ""}
@@ -43,13 +44,12 @@ export default function ProductImage({ items }: Props) {
         </div>
       </div>
       <div class="flex gap-2 my-5 justify-center">
-        {selectedProduct.image &&
+        {selectedProduct && selectedProduct.image &&
           selectedProduct.image.map((imageData, index) => (
             <button
+              key={imageData.url ?? index}
               aria-label="Change main image"
-              onClick={() => {
-                setSelected(index);
-              }}
+              onClick={() => setSelected(index)}
               class={`w-[85px] h-[85px] rounded-lg p-2 cursor-pointer ${boxShadowClassName}`}
             >
               <Image

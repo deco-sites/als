@@ -161,6 +161,8 @@ export default function ProductDetails({ page }: Props) {
 
   const map = createMapByColor(product);
 
+  const items =[...map.values()]
+
   const sizeImages = [...map.values()]
     .map((productItem) => {
       if (productItem?.image?.at(0)) {
@@ -183,7 +185,7 @@ export default function ProductDetails({ page }: Props) {
           <div class="flex justify-center">
             <div class="flex flex-col md:flex-row w-10/12">
               <div class="flex-auto flex flex-col w-full md:w-4/6 mb-5 md:mb-0">
-                <ProductImage items={map} />
+                <ProductImage items={items} />
               </div>
               <div class="flex-auto w-full md:w-2/6">
                 <h1 class="text-[#242424] text-3xl font-bold mb-4">
