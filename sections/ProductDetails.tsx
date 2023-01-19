@@ -15,6 +15,7 @@ import AddToCart from "../islands/AddToCart.tsx";
 import { PriceModel } from "../models/price-model.ts";
 
 import ProductInformation from "../islands/ProductInformation.tsx";
+import ProductImage from "../islands/ImageProduct.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -173,44 +174,7 @@ export default function ProductDetails({ page }: Props) {
           <div class="flex justify-center">
             <div class="flex flex-col md:flex-row w-10/12">
               <div class="flex-auto flex flex-col w-full md:w-4/6 mb-5 md:mb-0">
-                <div class="flex-1 flex justify-center">
-                  <div class="w-[450px] h-full flex justify-center cursor-zoom-in">
-                    {product.image && product.image[0] && (
-                      <Image
-                        class="w-full max-w-full h-auto"
-                        src={product.image[0].url ?? ""}
-                        alt={product.image[0].alternateName
-                          ? product.image[0].alternateName
-                          : `Main product: ${product.name}`}
-                        width={326}
-                        height={489}
-                        sizes="(max-width: 640px) 40vw, 20vw"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
-                  </div>
-                </div>
-                <div class="flex gap-2 my-5 justify-center">
-                  {product.image &&
-                    product.image.map((imageData, index) => (
-                      <div
-                        class={`w-[85px] h-[85px] rounded-lg p-2 cursor-pointer ${boxShadowClassName}`}
-                      >
-                        <Image
-                          class="w-full max-w-full h-auto opacity-40"
-                          src={imageData.url ?? ""}
-                          alt={imageData.alternateName
-                            ? imageData.alternateName
-                            : `Product image ${index}: ${product.name}`}
-                          width={75}
-                          height={75}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                    ))}
-                </div>
+               <ProductImage product={product} />
               </div>
               <div class="flex-auto w-full md:w-2/6">
                 <h1 class="text-[#242424] text-3xl font-bold mb-4">
