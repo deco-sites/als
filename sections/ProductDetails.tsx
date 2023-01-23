@@ -181,7 +181,7 @@ export default function ProductDetails({ page }: Props) {
         <title>{product.name ?? "Product name"}</title>
       </Head>
       <section class="w-full flex justify-center">
-        <div class="max-w-[96rem] flex flex-col pt-12 px-10">
+        <div class="max-w-[80rem] flex flex-col pt-12 px-10">
           <div class="flex justify-center">
             <div class="flex flex-col md:flex-row w-10/12">
               <div class="flex-auto flex flex-col w-full md:w-4/6 mb-5 md:mb-0">

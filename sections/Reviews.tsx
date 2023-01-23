@@ -78,7 +78,7 @@ export function ReviewsFooterPagination() {
 export default function Reviews() {
   return (
     <section class="flex justify-center">
-      <div class="w-full max-w-[96rem] px-10">
+      <div class="w-full max-w-[80rem] px-10">
         <Separator title="Reviews" />
         <h2 class="py-3 font-semibold text-2xl">Reviewed by 1 costumer</h2>
         <hr />

@@ -1,7 +1,7 @@
 export default function Newsletter() {
   return (
     <div class="flex justify-center my-20">
-      <section class="w-full max-w-[96rem] px-10">
+      <section class="w-full max-w-[80rem] px-10">
         <h1 class="text-3xl tracking-widest text-[#303533] mb-6">
           What do you want to know about this product?
         </h1>
