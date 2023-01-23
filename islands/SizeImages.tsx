@@ -2,11 +2,17 @@ import { ImageObject } from "https://deno.land/x/live@0.3.23/std/commerce/types.
 import Image from "$live/std/ui/components/Image.tsx";
 import { css, tw } from "twind/css";
 
+type ImageObjectWithItemId = ImageObject & {
+  id: string;
+};
+
 export interface Props {
-  images?: ImageObject[];
+  itemIdSelected?: string;
+  images?: ImageObjectWithItemId[];
+  onClick?: (imageData: ImageObjectWithItemId) => void;
 }
 
-export default function SizeImages({ images }: Props) {
+export default function SizeImages({ images, onClick, itemIdSelected }: Props) {
   const boxShadowClassName = tw(css({
     "@media (min-width: 640px)": {
       boxShadow: "0 0px 6px rgb(0 0 0 / 16%)",
@@ -18,7 +24,10 @@ export default function SizeImages({ images }: Props) {
       {images && images.map((imageData, index) => (
         <button
           aria-label={imageData.alternateName}
-          class={`w-[78px] h-[78px] p-2 rounded-lg cursor-pointer ${boxShadowClassName}`}
+          onClick={() => onClick && onClick(imageData)}
+          class={`w-[78px] h-[78px] relative p-2 rounded-lg cursor-pointer ${boxShadowClassName} ${
+            imageData.id === itemIdSelected ? "border-2 border-black" : ""
+          }`}
         >
           <Image
             class="w-full max-w-full h-auto"
@@ -31,6 +40,9 @@ export default function SizeImages({ images }: Props) {
             loading="lazy"
             decoding="async"
           />
+          {imageData.id === itemIdSelected && (
+            <div class="w-full h-full bg-black opacity-25 absolute top-0 left-0" />
+          )}
         </button>
       ))}
     </>

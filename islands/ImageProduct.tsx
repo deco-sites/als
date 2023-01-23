@@ -1,22 +1,31 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import type { ImageObject, ProductLeaf } from "$live/std/commerce/types.ts";
 import Image from "$live/std/ui/components/Image.tsx";
 import { css, tw } from "twind/css";
 
 export interface Props {
+  itemSelectedId?: string;
   items?: ProductLeaf[];
 }
 
-export default function ProductImage({ items }: Props) {
+export default function ProductImage({ items, itemSelectedId }: Props) {
   if (!items || items.length === 0) return <></>;
 
   const [selected, setSelected] = useState(0);
   const products = items;
 
-  const selectedProduct = products?.at(0);
+  const index =
+    products.findIndex((productItem) =>
+      productItem.productID === itemSelectedId
+    ) ?? 0;
+  const selectedProduct = products?.at(index);
   const mainImage: ImageObject | undefined | null = selectedProduct?.image?.at(
     selected,
   );
+
+  useEffect(() => {
+    setSelected(0);
+  }, [itemSelectedId]);
 
   const boxShadowClassName = tw(css({
     "@media (min-width: 640px)": {
@@ -43,7 +52,7 @@ export default function ProductImage({ items }: Props) {
           )}
         </div>
       </div>
-      <div class="flex gap-2 my-5 justify-center">
+      <div class="flex flex-nowrap gap-2 my-5 justify-center">
         {selectedProduct && selectedProduct.image &&
           selectedProduct.image.map((imageData, index) => (
             <button
