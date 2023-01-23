@@ -169,9 +169,7 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
       <div class="relative w-full flex justify-center">
         <div class="relative overflow-hidden" style="width: calc(100% - 80px)">
           <ul
-            class={`flex box-content my-6 w-[${carrosselWidth}%] ${
-              !loading ? "ease-in-out duration-500" : ""
-            }`}
+            class={`flex box-content my-6 w-[${carrosselWidth}%]`}
             style={`transform: translateX(-${corrosselTranslate}%)`}
           >
             {loading &&
