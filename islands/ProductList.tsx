@@ -92,7 +92,7 @@ function ProductPlaceholder() {
 
 export default function ProductList({ parentKeyword, tabs }: Props) {
   const titles = useMemo(() => tabs?.map(({ title }) => title), []);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [tabCurrentPosition, setTabCurrentPosition] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -130,7 +130,6 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
     })
       .then((response) => response.json())
       .then((products: Product[]) => {
-        console.log(products[0]);
         setProducts(products);
         setLoading(false);
       });
