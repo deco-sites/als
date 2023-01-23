@@ -130,7 +130,7 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
     })
       .then((response) => response.json())
       .then((products: Product[]) => {
-        console.log(products[0])
+        console.log(products[0]);
         setProducts(products);
         setLoading(false);
       });
