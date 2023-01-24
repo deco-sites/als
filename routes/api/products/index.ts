@@ -55,6 +55,7 @@ export const handler: Handlers = {
       count: Number(count),
       page: 1,
       query: `${parentKeyword} ${keyword}`,
+      account: "alssports",
     });
 
     const products = xvetResponse.products.map(ProductMapper.create);
