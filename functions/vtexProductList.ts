@@ -18,7 +18,7 @@ export interface Props {
  */
 const productListLoader: LoaderFunction<Props, Product[]> = async (
   _req,
-  _ctx,
+  ctx,
   props,
 ) => {
   const count = props.count ?? 12;
@@ -28,6 +28,7 @@ const productListLoader: LoaderFunction<Props, Product[]> = async (
     query,
     page: 0,
     count,
+    account: ctx.state.global.vtexconfig.account,
   };
 
   // search prodcuts on VTEX. Feel free to change any of these parameters

@@ -50,6 +50,7 @@ import * as $$$21 from "./sections/SearchControls.tsx";
 import * as $$$22 from "./sections/Separator.tsx";
 import * as $$$23 from "./sections/StoreFeatures.tsx";
 import * as $$$24 from "./sections/SupportLinks.tsx";
+import * as $$$25 from "./sections/vtexconfig.global.tsx";
 import * as $$$$0 from "./functions/shopifyProductDetailsPage.ts";
 import * as $$$$1 from "./functions/shopifyProductList.ts";
 import * as $$$$2 from "./functions/shopifyProductListingPage.ts";
@@ -109,6 +110,7 @@ const manifest: DecoManifest = {
     "./sections/Separator.tsx": $$$22,
     "./sections/StoreFeatures.tsx": $$$23,
     "./sections/SupportLinks.tsx": $$$24,
+    "./sections/vtexconfig.global.tsx": $$$25,
   },
   functions: {
     "./functions/shopifyProductDetailsPage.ts": $$$$0,
@@ -912,6 +914,37 @@ const manifest: DecoManifest = {
     },
     "./sections/SupportLinks.tsx": {
       "inputSchema": null,
+      "outputSchema": null,
+    },
+    "./sections/vtexconfig.global.tsx": {
+      "inputSchema": {
+        "title": "Vtexconfig.global",
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "title": "Account",
+            "description":
+              "VTEX Account name. For more info, read here: https://help.vtex.com/en/tutorial/o-que-e-account-name--i0mIGLcg3QyEy8OCicEoC.",
+          },
+          "salesChannel": {
+            "type": "string",
+            "title": "Sales Channel",
+            "description":
+              "VTEX sales channel. This will be the default sales channel your site. For more info, read here: https://help.vtex.com/tutorial/how-trade-policies-work--6Xef8PZiFm40kg2STrMkMV",
+          },
+          "locale": {
+            "type": "string",
+            "title": "Locale",
+            "description": "Locale used for VTEX Intelligent Search client.",
+          },
+        },
+        "required": [
+          "account",
+          "salesChannel",
+          "locale",
+        ],
+      },
       "outputSchema": null,
     },
     "./functions/shopifyProductDetailsPage.ts": {
