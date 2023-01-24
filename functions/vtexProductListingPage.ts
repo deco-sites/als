@@ -24,7 +24,7 @@ export interface Props {
  */
 const plpLoader: LoaderFunction<Props, ProductListingPage> = async (
   req,
-  _ctx,
+  ctx,
   props,
 ) => {
   const url = new URL(req.url);
@@ -39,6 +39,7 @@ const plpLoader: LoaderFunction<Props, ProductListingPage> = async (
     page,
     count,
     selectedFacets,
+    account: ctx.state.global.vtexconfig.account,
   };
 
   // search prodcuts on VTEX. Feel free to change any of these parameters

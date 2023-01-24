@@ -179,7 +179,7 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
               <li
                 class={`mx-4 my-2 rounded-lg box-content w-1/4 hover:cursor-pointer ease-in-out duration-200 hover:scale-105 ${boxShadowClassName}`}
               >
-                <a class="flex" href={`/${product.link}`}>
+                <a class="flex" href={product.link}>
                   <section class="flex flex-col items-center px-6 md:px-8 py-3">
                     <div class="relative">
                       <span class="absolute right-0 border-1 border-red-500 px-2 py-1 rounded-full text-xs text-red-500 bg-white">
