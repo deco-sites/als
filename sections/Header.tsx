@@ -135,13 +135,21 @@ function Navbar() {
           <NavItem href="https://www.als.com/category/mens2">Men's</NavItem>
           <NavItem href="https://www.als.com/category/womans2">Woman's</NavItem>
           <NavItem href="https://www.als.com/category/kids">Kids'</NavItem>
-          <NavItem href="https://www.als.com/category/camp-hike">Camp & Hike</NavItem>
-          <NavItem href="https://www.als.com/category/clamping">Climbing</NavItem>
+          <NavItem href="https://www.als.com/category/camp-hike">
+            Camp & Hike
+          </NavItem>
+          <NavItem href="https://www.als.com/category/clamping">
+            Climbing
+          </NavItem>
           <NavItem href="https://www.als.com/category/hunting">Hunting</NavItem>
-          <NavItem href="https://www.als.com/category/fishing-seasonal">Fishing</NavItem>
+          <NavItem href="https://www.als.com/category/fishing-seasonal">
+            Fishing
+          </NavItem>
           <NavItem href="https://www.als.com/category/sports">Sports</NavItem>
           <NavItem href="https://www.als.com/category/snowsports">Snow</NavItem>
-          <NavItem href="https://www.als.com/category/watersports">Water</NavItem>
+          <NavItem href="https://www.als.com/category/watersports">
+            Water
+          </NavItem>
           <NavItem href="https://www.als.com/category/biking">Bike</NavItem>
           <NavItem href="https://www.als.com/brands">Brands</NavItem>
           <div
