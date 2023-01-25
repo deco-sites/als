@@ -132,18 +132,18 @@ function Navbar() {
         <nav
           class={`flex w-full justify-between px-10 max-w-[1200px] ${containerClass}`}
         >
-          <NavItem href="/farm">Men's</NavItem>
-          <NavItem href="/farm">Woman's</NavItem>
-          <NavItem href="/farm">Kids'</NavItem>
-          <NavItem href="/farm">Camp & Hike</NavItem>
-          <NavItem href="/farm">Climbing</NavItem>
-          <NavItem href="/farm">Hunting</NavItem>
-          <NavItem href="/farm">Fishing</NavItem>
-          <NavItem href="/farm">Sorts</NavItem>
-          <NavItem href="/farm">Snow</NavItem>
-          <NavItem href="/farm">Water</NavItem>
-          <NavItem href="/farm">Bike</NavItem>
-          <NavItem href="/farm">Brands</NavItem>
+          <NavItem href="https://www.als.com/category/mens2">Men's</NavItem>
+          <NavItem href="https://www.als.com/category/womans2">Woman's</NavItem>
+          <NavItem href="https://www.als.com/category/kids">Kids'</NavItem>
+          <NavItem href="https://www.als.com/category/camp-hike">Camp & Hike</NavItem>
+          <NavItem href="https://www.als.com/category/clamping">Climbing</NavItem>
+          <NavItem href="https://www.als.com/category/hunting">Hunting</NavItem>
+          <NavItem href="https://www.als.com/category/fishing-seasonal">Fishing</NavItem>
+          <NavItem href="https://www.als.com/category/sports">Sports</NavItem>
+          <NavItem href="https://www.als.com/category/snowsports">Snow</NavItem>
+          <NavItem href="https://www.als.com/category/watersports">Water</NavItem>
+          <NavItem href="https://www.als.com/category/biking">Bike</NavItem>
+          <NavItem href="https://www.als.com/brands">Brands</NavItem>
           <div
             data-menu
             class="mt-[50px] left-0 rigth-0 absolute box-border w-full invisible"
