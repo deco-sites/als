@@ -4,11 +4,11 @@ import {
   ProductDetailsPage,
   ProductLeaf,
 } from "$live/std/commerce/types.ts";
-import { useState } from "preact/hooks";
+import { useEffect, useMemo, useState } from "preact/hooks";
 import { css, tw } from "twind/css";
 import { Separator } from "$components/Separator.tsx";
 import { Star } from "$components/icons/Star.tsx";
-import SizeImages from "../islands/SizeImages.tsx";
+import ColorImages from "../islands/ColorImages.tsx";
 
 import { PriceModel } from "../models/price-model.ts";
 import ProductImage from "../islands/ImageProduct.tsx";
@@ -17,37 +17,37 @@ export interface Props {
   product?: ProductDetailsPage["product"] | null;
 }
 
-type ImageObjectWithItemId = ImageObject & {
-  id: string;
+type ImageObjectWithValue = ImageObject & {
+  value?: string;
 };
 
-type Undefined<Type> = Type | undefined;
-
-export function Counter() {
-  const [count, setCount] = useState(0);
+function Counter() {
+  const [count, setCount] = useState(1);
   const handleIncrement = () => setCount(count + 1);
-  const handleDecrement = () => setCount(count - 1);
+  const handleDecrement = () => {
+    if (count > 1) setCount(count - 1);
+  };
 
   return (
     <div class="h-[20px] w-[120px] rounded-full p-3 border-2 border-gray-900 flex justify-center items-center justify-between">
-      <span onClick={handleDecrement} class="text-lg px-2 cursor-pointer">
+      <button
+        aria-label="Decrement"
+        onClick={handleDecrement}
+        class={`text-lg px-2 cursor-pointer ${count === 1 ? "opacity-20" : ""}`}
+      >
         -
-      </span>
-      <span class="text-sm">1</span>
-      <span onClick={handleIncrement} class="text-lg px-2">+</span>
+      </button>
+      <span class="text-sm">{count}</span>
+      <button
+        aria-label="Increment"
+        onClick={handleIncrement}
+        class={`text-lg px-2 cursor-pointer`}
+      >
+        +
+      </button>
     </div>
   );
 }
-
-const defaultSizes = [
-  "XS",
-  "S",
-  "M",
-  "L",
-  "XL",
-  "XX",
-  "3X",
-];
 
 const createMap = (
   each: (
@@ -82,6 +82,35 @@ const createMapBySize = createMap((map, productLeaf) => {
   return map;
 });
 
+const getAllAvailableSizes = (product: Product) => {
+  const sizesMap = createMapBySize(product);
+  return [...sizesMap.values()].map((productLeaf) => {
+    return productLeaf.additionalProperty?.filter(({ name }) =>
+      name === "Size"
+    )[0].value;
+  })
+    .filter((size): size is string => !!size);
+};
+
+const getAllAvailableColors = (product: Product) => {
+  const colorsMap = createMapByColor(product);
+  return [...colorsMap.values()].map((productLeaf) => {
+    const imageSelected = productLeaf?.image?.at(0);
+    if (imageSelected) {
+      const imageData: ImageObjectWithValue = {
+        ...imageSelected,
+        value: (productLeaf.additionalProperty ?? [])
+          .find((propertyData) => propertyData.name === "Color")?.value,
+      };
+
+      return imageData;
+    }
+
+    return null;
+  })
+    .filter((item): item is ImageObjectWithValue => !!item);
+};
+
 export default function ProductDetailsInfo({ product }: Props) {
   if (!product) return null;
 
@@ -107,34 +136,47 @@ export default function ProductDetailsInfo({ product }: Props) {
     },
   }));
 
-  const map = createMapByColor(product);
-  const sizesMap = createMapBySize(product);
+  const allAvailableSizes = useMemo(() => getAllAvailableSizes(product), [
+    product,
+  ]);
+  const allAvailableColors = useMemo(() => getAllAvailableColors(product), [
+    product,
+  ]);
 
-  const sizes = [...sizesMap.values()]
-    .map((productLeaf) =>
-      productLeaf.additionalProperty?.filter(({ name }) => name === "Size")[0]
-        .value
-    );
-  const items = [...map.values()];
+  const [colorSelected, setColorSelected] = useState(() =>
+    allAvailableColors.at(0)?.value
+  );
+  const [sizeSelected, setSizeSelected] = useState(() =>
+    allAvailableSizes.at(0)
+  );
 
-  const colorImages = [...map.values()]
-    .map((productItem) => {
-      if (productItem?.image?.at(0)) {
-        return {
-          ...productItem?.image?.at(0),
-          id: productItem?.productID,
-        };
-      }
+  const productLeafSelected = useMemo(() => {
+    const productsLeaf = product.isVariantOf?.hasVariant ?? [];
+    const currentItem = productsLeaf.find((productLeaf) => {
+      const hasColorSelected = (productLeaf.additionalProperty ?? []).some(
+        (propertyData) => {
+          return propertyData.name === "Color" &&
+            propertyData.value === colorSelected;
+        },
+      );
+      const hasSizeSelected = (productLeaf.additionalProperty ?? []).some(
+        (propertyData) => {
+          return propertyData.name === "Size" &&
+            propertyData.value === sizeSelected;
+        },
+      );
 
-      return null;
-    })
-    .filter((item): item is ImageObjectWithItemId => !!item);
+      return hasColorSelected && hasSizeSelected;
+    });
 
-  const [itemIdSelected, setItemIdSelected] = useState<Undefined<string>>();
+    return currentItem ?? productsLeaf.at(0);
+  }, [colorSelected, sizeSelected, product]);
 
-  const currentItem =
-    items.find((productItem) => productItem.productID === itemIdSelected) ??
-      items[0];
+  useEffect(() => {
+    // Change URL
+    const url = `${location.pathname}?skuId=${productLeafSelected?.sku}`;
+    history.replaceState(null, "", url);
+  }, [productLeafSelected]);
 
   return (
     <section class="w-full flex justify-center">
@@ -142,11 +184,11 @@ export default function ProductDetailsInfo({ product }: Props) {
         <div class="flex justify-center">
           <div class="flex flex-col md:flex-row w-10/12">
             <div class="flex-auto flex flex-col w-full md:w-4/6 mb-5 md:mb-0">
-              <ProductImage items={items} itemSelectedId={itemIdSelected} />
+              <ProductImage productLeafSelected={productLeafSelected} />
             </div>
             <div class="flex-auto w-full md:w-2/6">
               <h1 class="text-[#242424] text-3xl font-bold mb-4">
-                {currentItem.name}
+                {productLeafSelected?.name}
               </h1>
 
               {/* Rating Section */}
@@ -175,8 +217,8 @@ export default function ProductDetailsInfo({ product }: Props) {
               <h2 class="mb-4">
                 <span class="font-semibold text-red-500 leading-3 text-center text-2xl">
                   {PriceModel.create(
-                    currentItem.offers?.lowPrice,
-                    currentItem.offers?.highPrice,
+                    productLeafSelected?.offers?.lowPrice,
+                    productLeafSelected?.offers?.highPrice,
                   )}
                 </span>
                 {
@@ -189,14 +231,12 @@ export default function ProductDetailsInfo({ product }: Props) {
 
               {/* Colors Section */}
               <div class="mb-5">
-                <p class="font-bold text-[#2e2e2e] my-2">Color</p>
-                <div class="flex flex-wrap gap-2">
-                  <SizeImages
-                    images={colorImages}
-                    itemIdSelected={itemIdSelected}
-                    onClick={(imageData) => setItemIdSelected(imageData.id)}
-                  />
-                </div>
+                <ColorImages
+                  title="Color"
+                  images={allAvailableColors}
+                  colorSelected={colorSelected}
+                  onClick={setColorSelected}
+                />
               </div>
               {/* Colors Section End */}
 
@@ -204,11 +244,14 @@ export default function ProductDetailsInfo({ product }: Props) {
               <div class="mb-5">
                 <p class="font-bold text-[#2e2e2e] my-2">Size</p>
                 <div class="flex flex-wrap gap-2">
-                  {sizes.map((size) => (
+                  {allAvailableSizes.map((size) => (
                     <button
                       aria-label={`Size ${size}`}
-                      class={`rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center cursor-pointer`}
-                      // bg-gray-900 text-white
+                      class={`
+                        rounded-full w-[45px] h-[45px] border-2 border-gray-900 flex justify-center items-center cursor-pointer
+                        ${sizeSelected === size ? "bg-gray-900 text-white" : ""}
+                      `}
+                      onClick={() => setSizeSelected(size)}
                     >
                       <span class="font-bold">{size}</span>
                     </button>
@@ -225,7 +268,9 @@ export default function ProductDetailsInfo({ product }: Props) {
               {/* Quantity Section End */}
 
               {/* ID Section */}
-              <p class="mb-3 text-gray-400 text-sm">ID: {currentItem.sku}</p>
+              <p class="mb-3 text-gray-400 text-sm">
+                ID: {productLeafSelected?.sku}
+              </p>
               {/* ID Section End */}
 
               {/* Button Add Cart */}
@@ -236,7 +281,7 @@ export default function ProductDetailsInfo({ product }: Props) {
             </div>
           </div>
         </div>
-        {currentItem?.description && (
+        {productLeafSelected?.description && (
           <>
             <Separator title="Product Description" />
             <div

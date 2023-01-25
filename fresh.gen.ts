@@ -13,17 +13,17 @@ import * as $5 from "./routes/api/products/index.ts";
 import * as $6 from "./routes/index.tsx";
 import * as $7 from "./routes/inspect-vscode.ts";
 import * as $$0 from "./islands/AddToCart.tsx";
-import * as $$1 from "./islands/Dropdown.tsx";
-import * as $$2 from "./islands/ImageProduct.tsx";
-import * as $$3 from "./islands/LiveControls.tsx";
-import * as $$4 from "./islands/Minicart.tsx";
-import * as $$5 from "./islands/ProductDetailsInfo.tsx";
-import * as $$6 from "./islands/ProductInformation.tsx";
-import * as $$7 from "./islands/ProductList.tsx";
-import * as $$8 from "./islands/SearchBar.tsx";
-import * as $$9 from "./islands/SearchControls.tsx";
-import * as $$10 from "./islands/Sidebar.tsx";
-import * as $$11 from "./islands/SizeImages.tsx";
+import * as $$1 from "./islands/ColorImages.tsx";
+import * as $$2 from "./islands/Dropdown.tsx";
+import * as $$3 from "./islands/ImageProduct.tsx";
+import * as $$4 from "./islands/LiveControls.tsx";
+import * as $$5 from "./islands/Minicart.tsx";
+import * as $$6 from "./islands/ProductDetailsInfo.tsx";
+import * as $$7 from "./islands/ProductInformation.tsx";
+import * as $$8 from "./islands/ProductList.tsx";
+import * as $$9 from "./islands/SearchBar.tsx";
+import * as $$10 from "./islands/SearchControls.tsx";
+import * as $$11 from "./islands/Sidebar.tsx";
 import * as $$12 from "./islands/Slider.tsx";
 import * as $$$0 from "./sections/Banner.tsx";
 import * as $$$1 from "./sections/BannerGrid.tsx";
@@ -71,17 +71,17 @@ const manifest: DecoManifest = {
   },
   islands: {
     "./islands/AddToCart.tsx": $$0,
-    "./islands/Dropdown.tsx": $$1,
-    "./islands/ImageProduct.tsx": $$2,
-    "./islands/LiveControls.tsx": $$3,
-    "./islands/Minicart.tsx": $$4,
-    "./islands/ProductDetailsInfo.tsx": $$5,
-    "./islands/ProductInformation.tsx": $$6,
-    "./islands/ProductList.tsx": $$7,
-    "./islands/SearchBar.tsx": $$8,
-    "./islands/SearchControls.tsx": $$9,
-    "./islands/Sidebar.tsx": $$10,
-    "./islands/SizeImages.tsx": $$11,
+    "./islands/ColorImages.tsx": $$1,
+    "./islands/Dropdown.tsx": $$2,
+    "./islands/ImageProduct.tsx": $$3,
+    "./islands/LiveControls.tsx": $$4,
+    "./islands/Minicart.tsx": $$5,
+    "./islands/ProductDetailsInfo.tsx": $$6,
+    "./islands/ProductInformation.tsx": $$7,
+    "./islands/ProductList.tsx": $$8,
+    "./islands/SearchBar.tsx": $$9,
+    "./islands/SearchControls.tsx": $$10,
+    "./islands/Sidebar.tsx": $$11,
     "./islands/Slider.tsx": $$12,
   },
   sections: {
