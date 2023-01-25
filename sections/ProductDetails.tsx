@@ -6,6 +6,7 @@ import { LoaderReturnType } from "$live/std/types.ts";
 import { css, tw } from "twind/css";
 import { Head } from "$fresh/runtime.ts";
 import ProductDetailsInfo from "../islands/ProductDetailsInfo.tsx";
+import Breadcrumb from "$components/Breadcrumb.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -79,7 +80,7 @@ export default function ProductDetails({ page }: Props) {
 
   const {
     product,
-    breadcrumbList: { numberOfItems, itemListElement },
+    breadcrumbList: { itemListElement },
   } = page;
 
   return (
@@ -89,6 +90,7 @@ export default function ProductDetails({ page }: Props) {
         <ScriptLDJson {...page.breadcrumbList} />
         <title>{product.name ?? "Product name"}</title>
       </Head>
+      <Breadcrumb items={itemListElement} />
       <ProductDetailsInfo product={product} />
     </>
   );
