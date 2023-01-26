@@ -104,7 +104,7 @@ function Carousel({ images = [], delay = 3 }: Props) {
         </div>
       </div>
 
-      <Slider id={id} items={images.length} delay={delay * 1000} />
+      {/* <Slider id={id} items={images.length} delay={delay * 1000} /> */}
     </>
   );
 }

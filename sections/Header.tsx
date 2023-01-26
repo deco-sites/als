@@ -87,7 +87,7 @@ function Navbar() {
       </section>
 
       <section class="w-full flex h-[50px] lg:h-[64px] items-center px-1 lg:px-4 md:border-b md:border-t border-[rgba(255,255,255,0.2)] max-w-[96rem]">
-        <Sidebar />
+        {/* <Sidebar /> */}
 
         <img
           width="85"
@@ -125,7 +125,7 @@ function Navbar() {
         <a href="#" class="p-2 hidden lg:block" aria-label="my account">
           <Icon name="User" className="w-6 h-6" />
         </a>
-        <Minicart />
+        {/* <Minicart /> */}
       </section>
 
       <section class="hidden lg:flex flex-row h-[50px] justify-center w-full max-w-[96rem]">
