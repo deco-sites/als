@@ -192,7 +192,7 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
                         src={product.image.url}
                         height={204}
                         width={204}
-                        sizes="(max-width: 768px) 40w, 20w"
+                        sizes="(max-width: 767px) 40w, 20w"
                         loading="lazy"
                         decoding="async"
                       />
