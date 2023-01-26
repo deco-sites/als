@@ -1,4 +1,5 @@
 import Image from "$live/std/ui/components/Image.tsx";
+import { Picture, Source } from "$live/std/ui/components/Picture.tsx";
 import type { Image as LiveImage } from "$live/std/ui/types/Image.ts";
 
 export interface Banner {
@@ -37,16 +38,27 @@ export default function BannerGrid({
             class="w-[150px] h-[150px] md:w-[250px] md:h-[250px] rounded-2xl hover:scale-105 scale-100 transition hover:duration-500 duration-500"
             style={{ boxShadow: "0 0 7px 2px rgb(0 0 0 / 20%)" }}
           >
-            <Image
-              width={320}
-              height={320}
-              src={src}
-              alt={alt}
-              decoding="async"
-              loading="lazy"
-              sizes="(max-width: 640px) 100vw, 30vw"
-              class="w-full rounded-2xl"
-            />
+            <Picture>
+              <Source
+                media="(max-width: 767px)"
+                src={src}
+                height={150}
+                width={150}
+              />
+              <Source
+                media="(min-width: 768px)"
+                src={src}
+                height={250}
+                width={250}
+              />
+              <img
+                src={src}
+                alt={alt}
+                class="w-full rounded-2xl"
+                loading="lazy"
+                decoding="async"
+              />
+            </Picture>
           </a>
         ))}
       </div>
