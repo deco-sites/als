@@ -21,10 +21,11 @@ import * as $$5 from "./islands/Minicart.tsx";
 import * as $$6 from "./islands/ProductDetailsInfo.tsx";
 import * as $$7 from "./islands/ProductInformation.tsx";
 import * as $$8 from "./islands/ProductList.tsx";
-import * as $$9 from "./islands/SearchBar.tsx";
-import * as $$10 from "./islands/SearchControls.tsx";
-import * as $$11 from "./islands/Sidebar.tsx";
-import * as $$12 from "./islands/Slider.tsx";
+import * as $$9 from "./islands/ProductListPresentation.tsx";
+import * as $$10 from "./islands/SearchBar.tsx";
+import * as $$11 from "./islands/SearchControls.tsx";
+import * as $$12 from "./islands/Sidebar.tsx";
+import * as $$13 from "./islands/Slider.tsx";
 import * as $$$0 from "./sections/Banner.tsx";
 import * as $$$1 from "./sections/BannerGrid.tsx";
 import * as $$$2 from "./sections/BannerImg.tsx";
@@ -57,6 +58,7 @@ import * as $$$$2 from "./functions/shopifyProductListingPage.ts";
 import * as $$$$3 from "./functions/vtexProductDetailsPage.ts";
 import * as $$$$4 from "./functions/vtexProductList.ts";
 import * as $$$$5 from "./functions/vtexProductListingPage.ts";
+import * as $$$$6 from "./functions/vtexProductsListTab.ts";
 
 const manifest: DecoManifest = {
   routes: {
@@ -79,10 +81,11 @@ const manifest: DecoManifest = {
     "./islands/ProductDetailsInfo.tsx": $$6,
     "./islands/ProductInformation.tsx": $$7,
     "./islands/ProductList.tsx": $$8,
-    "./islands/SearchBar.tsx": $$9,
-    "./islands/SearchControls.tsx": $$10,
-    "./islands/Sidebar.tsx": $$11,
-    "./islands/Slider.tsx": $$12,
+    "./islands/ProductListPresentation.tsx": $$9,
+    "./islands/SearchBar.tsx": $$10,
+    "./islands/SearchControls.tsx": $$11,
+    "./islands/Sidebar.tsx": $$12,
+    "./islands/Slider.tsx": $$13,
   },
   sections: {
     "./sections/Banner.tsx": $$$0,
@@ -119,6 +122,7 @@ const manifest: DecoManifest = {
     "./functions/vtexProductDetailsPage.ts": $$$$3,
     "./functions/vtexProductList.ts": $$$$4,
     "./functions/vtexProductListingPage.ts": $$$$5,
+    "./functions/vtexProductsListTab.ts": $$$$6,
   },
   schemas: {
     "./sections/Banner.tsx": {
@@ -800,44 +804,16 @@ const manifest: DecoManifest = {
             "type": "string",
             "title": "Title",
           },
-          "keyword": {
+          "productsListTab": {
+            "$id": "11937206241c0bfdf048452602e24f305a995762",
+            "format": "live-function",
             "type": "string",
-            "title": "Keyword",
-          },
-          "tabs": {
-            "type": "array",
-            "items": {
-              "title": "TabProps",
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "title": "Title",
-                },
-                "keyword": {
-                  "type": "string",
-                  "title": "Keyword",
-                },
-                "count": {
-                  "type": [
-                    "number",
-                    "null",
-                  ],
-                  "title": "Count",
-                },
-              },
-              "required": [
-                "title",
-                "keyword",
-              ],
-            },
-            "title": "Tabs",
+            "title": "Products List Tab",
           },
         },
         "required": [
           "title",
-          "keyword",
-          "tabs",
+          "productsListTab",
         ],
       },
       "outputSchema": null,
@@ -1100,6 +1076,55 @@ const manifest: DecoManifest = {
         "properties": {
           "data": {
             "$id": "62615533560fc71180a86d2f3398b2396d2cbbc5",
+          },
+        },
+        "additionalProperties": true,
+      },
+    },
+    "./functions/vtexProductsListTab.ts": {
+      "inputSchema": {
+        "title": "Vtex Products List Tab",
+        "type": "object",
+        "properties": {
+          "tabs": {
+            "type": "array",
+            "items": {
+              "title": "TabProps",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "title": "Title",
+                },
+                "query": {
+                  "type": "string",
+                  "title": "Query",
+                  "description": "query to use on search",
+                },
+                "count": {
+                  "type": "number",
+                  "title": "Count",
+                  "description": "total number of items to display",
+                },
+              },
+              "required": [
+                "title",
+                "query",
+                "count",
+              ],
+            },
+            "title": "Tabs",
+          },
+        },
+        "required": [
+          "tabs",
+        ],
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$id": "11937206241c0bfdf048452602e24f305a995762",
           },
         },
         "additionalProperties": true,

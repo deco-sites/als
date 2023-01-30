@@ -37,7 +37,8 @@ export const ProductMapper = {
       percentageDiscount: 50,
       image: images[0],
       images: images,
-      link: `${product.link}?skuId=${product.items[0].itemId}`,
+      link: product.link ?? `${product.link}?skuId=${product.items[0].itemId}`,
+      // link: `${product.link}?skuId=${product.items[0].itemId}`,
     };
   },
 };
