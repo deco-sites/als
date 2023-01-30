@@ -14,12 +14,12 @@ export interface TabProps {
 }
 
 export interface Props {
-  tabs: TabProps[]
+  tabs: TabProps[];
 }
 
 export interface ProductsListTab {
-  title: string,
-  products: Product[]
+  title: string;
+  products: Product[];
 }
 
 /**
@@ -31,33 +31,35 @@ const productsListTabLoader: LoaderFunction<Props, ProductsListTab[]> = async (
   ctx,
   props,
 ) => {
-  const productsListPromises = props.tabs.map<Promise<ProductsListTab>>(async (tabSetting) => {
-    const count = tabSetting.count ?? 12;
-    const query = tabSetting.query || "";
-  
-    const searchArgs = {
-      query,
-      page: 0,
-      count,
-      account: ctx.state.global.vtexconfig.account,
-    };
-  
-    // search prodcuts on VTEX. Feel free to change any of these parameters
-    const productsResult = await vtex.search.products(searchArgs);
-    const { products: vtexProducts } = productsResult;
-  
-    // Transform VTEX product format into schema.org's compatible format
-    // If a property is missing from the final `products` array you can add
-    // it in here
-    const products = vtexProducts.map((p) => toProduct(p, p.items[0]));  
+  const productsListPromises = props.tabs.map<Promise<ProductsListTab>>(
+    async (tabSetting) => {
+      const count = tabSetting.count ?? 12;
+      const query = tabSetting.query || "";
 
-    return {
-      title: tabSetting.title,
-      products,
-    }
-  })
+      const searchArgs = {
+        query,
+        page: 0,
+        count,
+        account: ctx.state.global.vtexconfig.account,
+      };
 
-  const productsData = await Promise.all(productsListPromises)
+      // search prodcuts on VTEX. Feel free to change any of these parameters
+      const productsResult = await vtex.search.products(searchArgs);
+      const { products: vtexProducts } = productsResult;
+
+      // Transform VTEX product format into schema.org's compatible format
+      // If a property is missing from the final `products` array you can add
+      // it in here
+      const products = vtexProducts.map((p) => toProduct(p, p.items[0]));
+
+      return {
+        title: tabSetting.title,
+        products,
+      };
+    },
+  );
+
+  const productsData = await Promise.all(productsListPromises);
 
   return {
     data: productsData,

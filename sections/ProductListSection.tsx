@@ -11,8 +11,8 @@ import ProductListPresentation from "../islands/ProductListPresentation.tsx";
 
 export interface Props {
   title: string;
-  productsListTab: LoaderReturnType<ProductsListTab[]>
-  
+  productsListTab: LoaderReturnType<ProductsListTab[]>;
+
   // keyword: string;
   // tabs: TabProps[];
 }

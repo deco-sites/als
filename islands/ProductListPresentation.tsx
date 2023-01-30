@@ -14,11 +14,11 @@ export const ProductMapper = {
   create: (product: DecoProduct): Product => {
     const images = (product.image ?? []).map((image) => ({
       label: image.alternateName ?? "",
-      url: image.url ?? ""
-    })).slice(0, 3)
+      url: image.url ?? "",
+    })).slice(0, 3);
     const price = PriceModel.create(
       product.offers?.lowPrice,
-      product.offers?.highPrice
+      product.offers?.highPrice,
     );
     // const priceWithDiscount = PriceModel.create(
     //   product.offers.,
@@ -110,13 +110,19 @@ const colsByQueries: Record<string, number> = {
 };
 
 export default function ProductListPresentation({ tabs }: Props) {
-  const [products, setProducts] = useState<Product[]>(() => (tabs?.at(0)?.products ?? []).map(vtexProduct => ProductMapper.create(vtexProduct)));
+  const [products, setProducts] = useState<Product[]>(() =>
+    (tabs?.at(0)?.products ?? []).map((vtexProduct) =>
+      ProductMapper.create(vtexProduct)
+    )
+  );
   const [tabCurrentPosition, setTabCurrentPosition] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const currentQuery = useMediaQuery(queries);
   const cols = colsByQueries[currentQuery] ?? 1;
   const carrosselWidth = currentQuery ? products.length / cols * 100 : 100;
-  const corrosselTranslate = currentQuery ? (100 / products.length) * scrollPosition * cols : 0;
+  const corrosselTranslate = currentQuery
+    ? (100 / products.length) * scrollPosition * cols
+    : 0;
 
   const previousHandle = () =>
     setScrollPosition((scrollPosition) =>
@@ -129,11 +135,13 @@ export default function ProductListPresentation({ tabs }: Props) {
         : scrollPosition + 1
     );
   const changeTab = (index: number) => {
-    setTabCurrentPosition(index)
+    setTabCurrentPosition(index);
 
-    const products = (tabs[index].products ?? []).map(vtexProduct => ProductMapper.create(vtexProduct))
-    setProducts(products)
-  }
+    const products = (tabs[index].products ?? []).map((vtexProduct) =>
+      ProductMapper.create(vtexProduct)
+    );
+    setProducts(products);
+  };
 
   const boxShadowClassName = tw(css({
     "@media (min-width: 640px)": {
