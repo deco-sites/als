@@ -5,6 +5,7 @@ import { LivePageData } from "$live/types.ts";
 import Jitsu from "partytown/integrations/Jitsu.tsx";
 import Script from "partytown/Script.tsx";
 // import LivePage from "$live/components/LivePage.tsx";
+import { partytownSnippet } from "https://esm.sh/@builder.io/partytown@0.7.1/integration";
 
 import type { Flags, Page } from "$live/types.ts";
 import { Head } from "$fresh/runtime.ts";
@@ -68,6 +69,14 @@ export const handler = live();
 export default function LivePage({ data }: PageProps<LivePageData>) {
   return (
     <>
+      <Head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `partytown = {forward: ['dataLayer.push', 'jitsu']};`,
+          }}
+        />
+        <script dangerouslySetInnerHTML={{ __html: partytownSnippet() }} />
+      </Head>
       <Jitsu
         data-init-only="true"
         data-key="js.9wshjdbktbdeqmh282l0th.c354uin379su270joldy2"
