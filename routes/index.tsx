@@ -83,6 +83,7 @@ export default function LivePage({ data }: PageProps<LivePageData>) {
         />
       </Head>
       <Script
+        defer
         type="module"
         dangerouslySetInnerHTML={{
           __html: innerHtml({
