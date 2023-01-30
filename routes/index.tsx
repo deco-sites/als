@@ -72,6 +72,7 @@ export default function LivePage({ data }: PageProps<LivePageData>) {
   return (
     <>
       <Head>
+        <script>{`performance.mark('start')`}</script>
         <script
           dangerouslySetInnerHTML={{
             __html: `partytown = {forward: ['dataLayer.push', 'jitsu']};`,
@@ -92,6 +93,13 @@ export default function LivePage({ data }: PageProps<LivePageData>) {
             __html: errorHandlingScript,
           }}
         />
+
+        <script>
+          {`
+  performance.mark('end');
+  performance.measure('total', 'start', 'end');
+`}
+        </script>
       </Head>
       <Script
         defer
