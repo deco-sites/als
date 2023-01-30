@@ -60,8 +60,10 @@ type Props = Partial<Page> & { flags?: Flags };
 // Get all the scripts and check which ones have errors
 const errorHandlingScript = `
 window.__decoLoadingErrors = []
+setTimeout(() => {
 const scripts = document.querySelectorAll("script");
 scripts.forEach((e) => {e.onerror = () => __decoLoadingErrors.push(e.src) })
+}, 0)
 `;
 
 export const handler = live();
