@@ -3,44 +3,12 @@ import { useEffect, useMemo, useState } from "preact/hooks";
 import { css, tw } from "twind/css";
 import { ProductsListTab } from "../functions/vtexProductsListTab.ts";
 import type { Product } from "../interfaces/product.ts";
-import type { Product as DecoProduct } from "$live/std/commerce/types.ts";
-import { PriceModel } from "../models/price-model.ts";
 
 import Image from "$live/std/ui/components/Image.tsx";
 
 export interface Props {
   tabs: ProductsListTab[];
 }
-
-export const ProductMapper = {
-  create: (product: DecoProduct): Product => {
-    const images = (product.image ?? []).map((image) => ({
-      label: image.alternateName ?? "",
-      url: image.url ?? "",
-    })).slice(0, 3);
-    const price = PriceModel.create(
-      product.offers?.lowPrice,
-      product.offers?.highPrice,
-    );
-    // const priceWithDiscount = PriceModel.create(
-    //   product.offers.,
-    //   product.priceRange.sellingPrice.highPrice,
-    // );
-
-    return {
-      title: product.brand ?? "",
-      description: product.name ?? "",
-      price: price,
-      // priceWithDiscount: price !== priceWithDiscount ? priceWithDiscount : "",
-      priceWithDiscount: "",
-      rating: 5,
-      percentageDiscount: 50,
-      image: images[0],
-      images: images,
-      link: product.url ?? "",
-    };
-  },
-};
 
 type Queries = Record<string, string>;
 
@@ -113,9 +81,7 @@ const colsByQueries: Record<string, number> = {
 
 export default function ProductListPresentation({ tabs }: Props) {
   const [products, setProducts] = useState<Product[]>(() =>
-    (tabs?.at(0)?.products ?? []).map((vtexProduct) =>
-      ProductMapper.create(vtexProduct)
-    )
+    (tabs?.at(0)?.products ?? [])
   );
   const [tabCurrentPosition, setTabCurrentPosition] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -139,9 +105,7 @@ export default function ProductListPresentation({ tabs }: Props) {
   const changeTab = (index: number) => {
     setTabCurrentPosition(index);
 
-    const products = (tabs[index].products ?? []).map((vtexProduct) =>
-      ProductMapper.create(vtexProduct)
-    );
+    const products = (tabs[index].products ?? [])
     setProducts(products);
   };
 

@@ -805,7 +805,7 @@ const manifest: DecoManifest = {
             "title": "Title",
           },
           "productsListTab": {
-            "$id": "11937206241c0bfdf048452602e24f305a995762",
+            "$id": "fe0ca3ef8486bbf388a4d971be5a5c717093fda2",
             "format": "live-function",
             "type": "string",
             "title": "Products List Tab",
@@ -1124,7 +1124,7 @@ const manifest: DecoManifest = {
         "type": "object",
         "properties": {
           "data": {
-            "$id": "11937206241c0bfdf048452602e24f305a995762",
+            "$id": "fe0ca3ef8486bbf388a4d971be5a5c717093fda2",
           },
         },
         "additionalProperties": true,
