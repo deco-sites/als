@@ -80,8 +80,8 @@ const colsByQueries: Record<string, number> = {
 };
 
 export default function ProductListPresentation({ tabs }: Props) {
-  const [products, setProducts] = useState<Product[]>(() =>
-    (tabs?.at(0)?.products ?? [])
+  const [products, setProducts] = useState<Product[]>(
+    () => (tabs?.at(0)?.products ?? []),
   );
   const [tabCurrentPosition, setTabCurrentPosition] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -105,7 +105,7 @@ export default function ProductListPresentation({ tabs }: Props) {
   const changeTab = (index: number) => {
     setTabCurrentPosition(index);
 
-    const products = (tabs[index].products ?? [])
+    const products = (tabs[index].products ?? []);
     setProducts(products);
   };
 
