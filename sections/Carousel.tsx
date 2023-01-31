@@ -1,6 +1,7 @@
 import { useId } from "preact/hooks";
 import type { Image as LiveImage } from "$live/std/ui/types/Image.ts";
 import Slider from "../islands/Slider.tsx";
+import { Picture, Source } from "$live/std/ui/components/Picture.tsx";
 
 export interface Props {
   images: Array<{
@@ -42,13 +43,27 @@ function Carousel({ images = [], delay = 3 }: Props) {
             index,
           ) => (
             <div class="h-[600px] md:min-h-[780px] w-full relative">
-              <img
-                srcset={`${mobile} 767w, ${desktop} 1024w`}
-                sizes="(max-width: 767px) 280px, 1024px"
-                src={desktop}
-                alt={title}
-                class="object-cover object-center w-full h-full"
-              />
+              <Picture preload={index === 0}>
+                <Source
+                  src={mobile}
+                  media="(max-width: 767px)"
+                  width={360}
+                  height={600}
+                />
+                <Source
+                  src={desktop}
+                  media="(min-width: 768px)"
+                  width={1024}
+                  height={780}
+                />
+                <img
+                  src={desktop}
+                  alt={title}
+                  class="object-cover object-center w-full h-full"
+                  loading={index === 0 ? "eager" : undefined}
+                  decoding={index === 0 ? "auto" : "async"}
+                />
+              </Picture>
               <div
                 class="w-full h-1/2 md:w-[420px] md:h-[270px] py-4 absolute bottom-0 md:bottom-[25%] left-0 md:left-[15%] bg-[rgba(0,0,0,0.7)] text-white flex flex-col justify-center items-center md:items-start md:rounded-xl md:px-6 md:py-4"
                 style={{ backdropFilter: "blur(6px)" }}

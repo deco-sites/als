@@ -3,6 +3,8 @@ import { useEffect, useMemo, useState } from "preact/hooks";
 import { css, tw } from "twind/css";
 import type { Product } from "../interfaces/product.ts";
 
+import Image from "$live/std/ui/components/Image.tsx";
+
 export interface TabProps {
   title: string;
   keyword: string;
@@ -185,20 +187,27 @@ export default function ProductList({ parentKeyword, tabs }: Props) {
                       <span class="absolute right-0 border-1 border-red-500 px-2 py-1 rounded-full text-xs text-red-500 bg-white">
                         Save {product.percentageDiscount}%
                       </span>
-                      <img
+                      <Image
                         class="h-full"
                         alt={product.image.label ?? `Product ${product.title}`}
-                        loading="lazy"
                         src={product.image.url}
+                        height={204}
+                        width={204}
+                        sizes="(max-width: 767px) 40w, 20w"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <div class="flex py-2">
                       {product.images.map((image, index) => (
-                        <img
+                        <Image
                           alt={image.label ?? `Product image ${index}`}
                           class="w-[48px] h-[48px] mx-1"
                           loading="lazy"
                           src={image.url}
+                          width={48}
+                          height={48}
+                          decoding="async"
                         />
                       ))}
                     </div>
