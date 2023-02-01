@@ -12,14 +12,11 @@ const DEFAULT_SKU = 580747;
  */
 const productPageLoader: LoaderFunction<null, ProductDetailsPage | null> =
   async (
-    req,
+    _req,
     ctx,
   ) => {
-    const url = new URL(req.url);
-    const skuId = url.searchParams.get("skuId");
-    let query = skuId ? `sku:${skuId}` : `name:${ctx.params.slug}`;
-
-    if (!skuId && !ctx.params.slug) query = `sku:${DEFAULT_SKU}`;
+    const skuId = Number(ctx.params.slug?.split("-").pop()) || DEFAULT_SKU;
+    const query = `sku:${skuId}`;
 
     // search prodcuts on VTEX. Feel free to change any of these parameters
     const { products: [product] } = await vtex.search.products({
